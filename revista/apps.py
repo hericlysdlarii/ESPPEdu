@@ -1,5 +1,4 @@
 from django.apps import AppConfig
 
-
-class RevistaConfig(AppConfig):
-    name = 'revista'
+class AppConfig(AppConfig):
+    name = 'app'
