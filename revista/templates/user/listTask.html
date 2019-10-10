@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<h1>listar</h1>
+{% for task in tasks %}
+<div class="card mb-3">
+    <div class="card-header">  
+        {{ task.name }}
+    </div>
+    <div class="card-body">  
+        <h5 class="card-title">{{ task.about }}</h5>
+        <p></p>
+        <h8 class="card-title">{{ task.get_priority_display }}</h8>
+        <p class="card-text">{{ task.date }}</p>
+        <hr>
+        <a href="{% url 'updateTask' task.id %}"><input type="button" class="btn btn-info mb-3" value="Alterar"></a>
+        <a href="{% url 'removeTask' task.id %}"><input type="button" class="btn btn-danger mb-3" value="Remover"></a>
+    </div>
+</div>
+{% endfor %}
+<a href="{% url 'home' %}"><input type="button" class="btn btn-primary mb-3" value="Voltar"></a>
+<a href="{% url 'createTask' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar"></a>
+{% endblock content %}
