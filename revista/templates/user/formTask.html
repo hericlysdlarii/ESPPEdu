@@ -4,31 +4,31 @@
 <h1>criar</h1>
 <br>
 <form method="POST">
-    {% csrf_token %}
-    <div class='form-group'>
-        {{ formTask.nome.erros }}
-        <label>Nome: </label>
-        {{ formTask.name|addClass:'form-control' }}
-    </div>
-    <div class='form-group'>
-        {{ formTask.about.erros }}
-        <label>Sobre: </label>
-        {{ formTask.about|addClass:'form-control' }}
-    </div>
-    <div class='form-group'>
-        {{ form_hoformTaskme.date.erros }}
-        <label>Data: </label>
-        {{ formTask.date|addClass:'form-control' }}
-    </div>
-    <div class='form-group'>
-        {{ formTask.priority.erros }}
-        <label>Prioridade: </label>
-        {{ formTask.priority|addClass:'form-control' }}
-    </div>
-    <div>
-        <a href="{% url 'home' %}"><input type="button" class="btn btn-primary" value="Voltar"></a>
-        <input type="submit" class="btn btn-primary" value="Salvar">
-    </div>
+	{% csrf_token %}
+	<div class='form-group'>
+		{{ formTask.nome.erros }}
+		<label>Nome: </label>
+		{{ formTask.name|addClass:'form-control' }}
+	</div>
+	<div class='form-group'>
+		{{ formTask.about.erros }}
+		<label>Sobre: </label>
+		{{ formTask.about|addClass:'form-control' }}
+	</div>
+	<div class='form-group'>
+		{{ form_hoformTaskme.date.erros }}
+		<label>Data: </label>
+		{{ formTask.date|addClass:'form-control' }}
+	</div>
+	<div class='form-group'>
+		{{ formTask.priority.erros }}
+		<label>Prioridade: </label>
+		{{ formTask.priority|addClass:'form-control' }}
+	</div>
+	<div>
+		<a href="{% url 'home' %}"><input type="button" class="btn btn-primary" value="Voltar"></a>
+		<input type="submit" class="btn btn-primary" value="Salvar">
+	</div>
 </form>
 
 {% endblock content %}

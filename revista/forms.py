@@ -6,4 +6,3 @@ class taskform(forms.ModelForm):
         model = tasks
         exclude = ('user', )
         fields = '__all__'
-    

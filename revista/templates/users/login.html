@@ -2,23 +2,23 @@
 {% load filters %}
 {% block content %}
 <form method='POST'>
-    {% csrf_token %}
-    {% for message in messages %}
-    <div class="alert alert-danger">
-        {{message}}
-    </div>
-    {% endfor f%}
-    <div class="form-group">
-        <label>Nome do Usuário: </label>
-        {{ formLogin.username|addClass:'form-control'}}
-    </div>
-    <div class="form-group">
-        <label>Senha: </label>
-        {{ formLogin.password|addClass:'form-control'}}
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Entrar" class="btn btn-primary">
-        <a href="{% url 'createUser' %}"><input type="button" class="btn btn-primary" value="Criar Usuário"></a>
-    </div>
+	{% csrf_token %}
+	{% for message in messages %}
+	<div class="alert alert-danger">
+		{{message}}
+	</div>
+	{% endfor f%}
+	<div class="form-group">
+		<label>Nome do Usuário: </label>
+		{{ formLogin.username|addClass:'form-control'}}
+	</div>
+	<div class="form-group">
+		<label>Senha: </label>
+		{{ formLogin.password|addClass:'form-control'}}
+	</div>
+	<div class="form-group">
+		<input type="submit" value="Entrar" class="btn btn-primary">
+		<a href="{% url 'createUser' %}"><input type="button" class="btn btn-primary" value="Criar Usuário"></a>
+	</div>
 </form>
 {% endblock content %}
