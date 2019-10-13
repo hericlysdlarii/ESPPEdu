@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
-		<title>ESPPEDU</title>
-		<link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
-	</head>
-	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="{% url 'home' %}">ESPPEDU</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav"> 
-				<ul class="navbar-nav">
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'createTask' %}">Criar</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'listTask' %}">Listar</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'logoutUser' %}">Logout</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-		<main class="container">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="https://www.djangoproject.com/favicon.ico">
+        <title>ESPPEdu</title>
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <!-- Font-awesome -->
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+        <style>
+            body {
+                margin-top: 60px;
+            }
+        </style>
+
+        {% block css %}{% endblock css %}
+
+        </body>
+
+    </head>
+
+    <body>
+        {% include "includes/nav.html" %}
+        
+        <main class="container">
             {% block content %}
-            
-            {% endblock content  %}
-		</main>
-	</body>
+        
+            {% endblock content %}
+        </main>
+
+         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        {% block js %}{% endblock js %}
+
+    </body>
 </html>
