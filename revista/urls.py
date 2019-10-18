@@ -3,7 +3,7 @@ from .views.viewsTask import *
 from .views.viewsUser import *
 
 urlpatterns = [
-    path('home/', home, name='home'),
+    path('', home, name='home'),
     path('create/', createTask, name='createTask'),
     path('list/', listTask, name='listTask'),
     path('update/<int:id>', updateTask, name='updateTask'),
