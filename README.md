@@ -5,7 +5,7 @@
 First, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/sibtc/django-auth-tutorial-example.git
+git clone https://github.com/hericlysdlarii/ESPPEdu
 ```
 
 Install the requirements:
