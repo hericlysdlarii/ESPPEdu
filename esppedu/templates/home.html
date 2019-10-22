@@ -3,7 +3,4 @@
 {% block content %}
   <h2>Pagina principal</h2>
   <p>Bem vindo ao ESPPedu, {% if user.is_authenticated %}{{ user.username }}{% else %}visitante{% endif %}!</p>
-  <p>
-    <strong>Total de usuários cadastrados: </strong> {{ count }}
-  </p>
 {% endblock %}

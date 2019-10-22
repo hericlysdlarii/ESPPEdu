@@ -29,15 +29,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Home</a>
-          </li>
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'secret' %}">Pagina 1</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'secret2' %}">Pagina 2</a>
+              <a class="nav-link" href="{% url 'secret' %}">Meus Artigos</a>
             </li>
           {% endif %}
         </ul>
