@@ -14,6 +14,7 @@ def home(request):
         'count': count
     })
 
+@login_required
 def upload(request):
     context = {}
     if request.method == 'POST':
@@ -23,14 +24,20 @@ def upload(request):
         context['url'] = fs.url(name)
     return render(request, 'upload.html', context)
 
-def artigos_lista(request):
+# def artigos_lista(request):
+#     artigos = Artigo.objects.all()
+#     return render(request,'artigo_lista.html',{
+#         'artigos': artigos
+#     })
+
+
+def listar_artigos(request):
     artigos = Artigo.objects.all()
     return render(request,'artigo_lista.html',{
         'artigos': artigos
     })
 
-
-
+@login_required
 def artigos_upload(request):
     if request.method == 'POST':
         form = ArtigoForm(request.POST, request.FILES)
@@ -43,6 +50,7 @@ def artigos_upload(request):
         'form':form
     })
 
+@login_required
 def artigos_delete(request, pk):
     if request.method == 'POST':
         artigo = Artigo.objects.get(pk=pk)
@@ -56,7 +64,7 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('secret_page.html')
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {
@@ -66,7 +74,10 @@ def signup(request):
 
 @login_required
 def secret_page(request):
-    return render(request, 'secret_page.html')
+    artigos = Artigo.objects.all()
+    return render(request,'artigo_lista.html',{
+        'artigos': artigos
+    })
 
 
 class SecretPage(LoginRequiredMixin, TemplateView):
