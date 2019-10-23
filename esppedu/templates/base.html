@@ -73,6 +73,7 @@
 					<ul style="padding: 5px;" class="dropdown-menu">
 
 						{% if user.is_authenticated %}
+						<p class="pt-3">Bem vindo <strong>{{ user.username }}!!</strong></p>
 						<li class="active"><a href="{% url 'logout' %}">Desconectar</a></li>
 						{% else %}
 						<li class="active"><a href="{% url 'login' %}">Conectar</a></li>
