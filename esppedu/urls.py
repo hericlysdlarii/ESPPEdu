@@ -10,7 +10,7 @@ from django.conf.urls import url
 urlpatterns = [
     path('', views.home, name='home'),
 
-    path('upload/', views.upload, name='upload'),
+    path('upload/', views.artigos_upload, name='upload'),
     path('artigos/', views.artigos_lista, name='artigo_lista'),
     path('artigos/<int:pk>/', views.artigos_delete, name='artigo_delete'),
     path('artigos/upload', views.artigos_upload, name='artigo_upload'),

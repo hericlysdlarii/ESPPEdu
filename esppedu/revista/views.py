@@ -23,8 +23,14 @@ from .tokens import account_activation_token
 from django.template.loader import render_to_string
 
 #--------------------------------
+variavel = None
+
+def retorna():
+    return variavel
 
 def home(request):
+    variavel = request.user
+    print("Variavel do usuario", variavel)
     count = User.objects.count()
     return render(request, 'home.html', {
         'count': count
@@ -50,8 +56,11 @@ def artigos_lista(request):
 @login_required
 def artigos_upload(request):
     if request.method == 'POST':
+        print ("POst ",request.POST, "FILES ", request.FILES)
         form = ArtigoForm(request.POST, request.FILES)
+       
         if form.is_valid():
+            form.autor = variavel
             form.save()
             return redirect('artigo_lista')
     else:
@@ -90,6 +99,9 @@ def activate(request, uidb64, token):
         return redirect('home')
     else:
         return render(request, 'activation/activation_invalid.html')
+
+def retorna_usuario_autenticado():
+    return variavel
 
 def signup_view(request):
     if request.method  == 'POST':
