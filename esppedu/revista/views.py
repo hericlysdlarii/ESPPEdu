@@ -23,14 +23,14 @@ from .tokens import account_activation_token
 from django.template.loader import render_to_string
 
 #--------------------------------
-variavel = None
+aut = ''
 
 def retorna():
-    return variavel
+    return aut
+
 
 def home(request):
-    variavel = request.user
-    print("Variavel do usuario", variavel)
+    aut = request.user
     count = User.objects.count()
     return render(request, 'home.html', {
         'count': count
@@ -48,25 +48,25 @@ def upload(request):
 
 @login_required
 def artigos_lista(request):
-    artigos = Artigo.objects.all()
+    artigos = Artigo.objects.filter(autor=request.user)
     return render(request,'artigo_lista.html',{
-        'artigos': artigos
+        'artigos': artigos, 'autor': request.user
     })
 
 @login_required
 def artigos_upload(request):
-    if request.method == 'POST':
-        print ("POst ",request.POST, "FILES ", request.FILES)
-        form = ArtigoForm(request.POST, request.FILES)
-       
+    aut = request.user
+    form = ArtigoForm(request.POST, request.FILES)
+    if request.method == 'POST':        
         if form.is_valid():
-            form.autor = variavel
-            form.save()
+            instance = form.save(commit=False)
+            instance.autor = request.user
+            instance.save()
             return redirect('artigo_lista')
     else:
         form = ArtigoForm()
     return render(request,'artigo_upload.html', {
-        'form':form
+        'form':form, 'autor':aut
     })
 
 @login_required

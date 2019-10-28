@@ -5,22 +5,30 @@ from .models import Artigo
 
 
 
+
 # D'Lariinhoo mexendo aqui
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-#--------------------------------------------------
-#teste = User.get_username()
+
 class ArtigoForm(forms.ModelForm):
-    #Não mexa aqui
-    ##autor = forms.CharField(max_length=4, disabled=True, initial=teste)
+
+ 
+    #variavel = forms.CharField(max_length=4, disabled=True)
+
+
+
+    #lists = forms.ModelChoiceField(queryset=None, widget=forms.Select, required=True)
+        
+    #autor = forms.CharField(max_length=4, disabled=True, initial=" ")
+
+
     class Meta:
+        
         model = Artigo 
-        fields = ('autor','cod_artigo','titulo','resumo', 'palavras_chaves', 'area','pdf')
-
-
-
+        exclude = ('autor',)
+        fields = ('cod_artigo','titulo','resumo', 'palavras_chaves', 'area','pdf')
 
 
 class SignUpForm(UserCreationForm):
