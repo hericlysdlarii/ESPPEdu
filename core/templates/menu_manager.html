@@ -1,0 +1,27 @@
+<li class="header">Navegação</li>
+<li class="treeview-menu">
+		<li>
+			<a href=""><i class="fa fa-th"></i>
+				<span>Dashboard</span>
+			</a>
+		</li>
+
+</li>
+
+<li class="treeview">
+	<a href="#">
+		<i class="fa fa-university"></i> <span>Comitê Organizador</span>
+		<span class="pull-right-container">
+			<i class="fa fa-angle-right pull-right"></i>
+		</span>
+	</a>
+	<ul class="treeview-menu">
+		<li><a href="{% url 'evaluation_committee:list_work' %}"><i class="fa fa-file"></i>Trabalhos</a></li>
+		<li><a href="{% url 'evaluation_committee:list_interest_area' %}"><i class="fa fa-book"></i>Área de Interesse</a></li>
+		<li><a href="{% url 'evaluation_committee:list_evaluation' %}"><i class="fa fa-clipboard"></i>Avaliações</a></li>
+		{% comment %}
+		<li><a href="{% url 'evaluation_committee:list_rating_criteria' %}"><i class="fa fa-check"></i>Critério de Avaliação</a></li>
+		{% endcomment %}
+	</ul>
+</li>
+</li>

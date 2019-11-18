@@ -1,0 +1,84 @@
+			<li class="header">Navegação</li>
+					<li class="treeview-menu">
+							<li>
+								<a href="{% url 'core:index' %}"><i class="fa fa-th"></i>
+									<span>Dashboard</span>
+								</a>
+							</li>
+
+					</li>
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-users"></i> <span>Usuários</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="{% url 'accounts:list_user_admin' %}"><i class="fa fa-university"></i> Administradores</a></li>
+
+							<li><a href="{% url 'accounts:list_user' %}"><i class="fa fa-user" aria-hidden="true"></i>Participantes</a></li>
+						</ul>
+					</li>
+
+					{% comment %} <li class="treeview">
+						<a href="#">
+							<i class="fa fa-calendar"></i> <span>Evento</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="{% url 'editions:list_campus' %}"><i class="fa fa-university"></i> Campus</a></li>
+
+							<li><a href="{% url 'editions:list_activity' %}"><i class="fa fa-align-justify" aria-hidden="true"></i>Atividades</a></li>
+
+							<li><a href="{% url 'editions:add_type_activity' %}"><i class="fa fa-list" aria-hidden="true"></i>Tipos de Atividades</a></li>
+
+							<li><a href="{% url 'editions:list_location' %}"><i class="fa fa-building" aria-hidden="true"></i>Locais</a></li>
+							<li><a href="{% url 'editions:list_edition' %}"><i class="fa fa-circle-o" aria-hidden="true"></i>Edição</a></li>
+
+							<li><a href="{% url 'editions:certificates' %}"><i class="fa fa-certificate" aria-hidden="true"></i>Certificados</a></li>
+							<li><a href="{% url 'editions:notification-certificate' %}"><i class="fa fa-envelope" aria-hidden="true"></i>Notificação dos Certificados</a></li>
+
+						</ul>
+					</li> {% endcomment %}
+
+
+					{% comment %} <li class="treeview">
+						<a href="#">
+							<i class="fa fa-check"></i> <span>Inscrições</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							
+							<li><a href="{% url 'editions:list_inscription' %}"><i class="fa fa-calendar"></i>Evento</a></li>
+							
+							<li><a href="{% url 'editions:list_inscription_activity' %}"><i class="fa fa-align-justify" aria-hidden="true"></i>Atividades</a></li>
+							
+
+						</ul>
+					</li> {% endcomment %}
+
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-university"></i> <span>Comitê Organizador</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="{% url 'evaluation_committee:list_evaluation_committee' %}"><i class="fa fa-users"></i>Comissão Avaliadora</a></li>
+							<li><a href="{% url 'evaluation_committee:list_work' %}"><i class="fa fa-file"></i>Trabalhos</a></li>
+							<li><a href="{% url 'evaluation_committee:list_interest_area' %}"><i class="fa fa-book"></i>Área de Interesse</a></li>
+							{% comment %}
+							<li><a href="{% url 'evaluation_committee:list_evaluation' %}"><i class="fa fa-clipboard"></i>Avaliações</a></li>
+							<li><a href="{% url 'evaluation_committee:list_rating_criteria' %}"><i class="fa fa-check"></i>Critério de Avaliação</a></li> 
+							{% if request.user.username == 'gabriell' or request.user.username == 'marcoslira' %}
+							<li><a href="{% url 'core:ranking' %}"><i class="fa fa-medal"></i>Ranking</a></li>
+							{% endif %} {% endcomment %}
+						</ul>
+					</li>
+			</li>

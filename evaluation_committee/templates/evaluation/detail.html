@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load l10n %}
+{% load static %}
+{% block body %}
+
+<div class="content">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+				<h3>Avaliação : {{ object.work.title }}</h3>
+			<div class="box box-primary">
+				<div class="box-body">
+          {% if object.work.file_word %}
+					<a href="{{ object.work.file_word.url }}" class="btn btn-primary">
+						<strong>Word</strong>
+          </a>
+          {% endif %}
+          {% if object.work.file_pdf %}
+          <a href="{{ object.work.file_pdf.url }}" class="btn btn-primary">
+						<strong>PDF</strong>
+          </a>
+          {% endif %}
+				</div>
+        <div class="box-body">
+          <table class="table table-striped" id="contato_table">
+            {% comment %} <tbody>
+              <tr>
+                <th style="width:70%">Critério</th>
+                <th>Nota</th>
+              </tr>
+            {% for criteria in rating_criteria %}
+              <tr>
+                  <td>{{ criteria.criteria.name}}</td>
+                  <td>{{ criteria.value}}</td>
+              </tr>
+            {% endfor %}
+            <tr>
+              <td>
+                <strong>Média</strong>
+              </td>
+              <td><strong>{{ object.average }}</strong></td>
+            </tr>
+            </tbody> {% endcomment %}
+          </table>
+          <table class="table table-striped">
+            <tr>
+              <td><strong>Observações: </strong></td>
+              <td>{% if object.observation %}{{ object.observation }}{% endif %}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="box-body">
+          <h3>Informações</h3>
+          <table class="table table-striped" id="contato_table">
+            <tbody>
+              <tr>
+                <th>
+                  Nome
+                </th>
+                <th>
+                  Email
+                </th>
+                <th>
+                  É coordenador?
+                </th>
+              </tr>
+              {% for author in authors %}
+                <tr>
+                  <td>{{ author.user.name }}</td>
+                  <td>{{ author.user.email }}</td>
+                  <td>{% if author.is_coordinator %}Sim{% else %}Não{% endif %}</td>
+                </tr>
+              {% endfor %}
+              <tr>
+                <td><strong>Área de Intersse</strong></td>
+                <td>{{ object.work.interest_area }}</td>
+              </tr>
+              <tr>
+                <td><strong>Palavras-Chave: </strong></td>
+                <td>{{ object.work.key_words }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+

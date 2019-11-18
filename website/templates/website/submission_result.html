@@ -1,0 +1,91 @@
+{% extends 'base_public.html' %}
+{% load staticfiles %}
+{% block title %}SEMEX | Programações{% endblock %}
+
+{% block header %}
+    <!--Header-area-->
+    <header class="header-area overlay full-height relative v-center">
+        <div class="absolute anlge-bg"></div>
+        <div class="container">
+            <div class="row v-center">
+                <div class="col-xs-12 col-md-12 text-center">
+                    <img src="{% static 'images/SIUFPI_site.png' %}" alt="">
+                    <h1>RESULTADOS</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--Header-area/-->
+{% endblock %}
+
+{% block body %}
+
+    <section class="gray-bg section-padding" id="register-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+                    <div class="page-title">
+                      <h2>RESULTADO DAS SUBMISSÕES</h2>
+                      <p>A seguir estão os resultados das submissões de cada Campus para o evento</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+
+                 
+                  <div class="panel panel-success">
+                          <div class="panel-heading">
+                              Resultado da Seleção de Trabalhos
+                          </div>
+                          <div class="panel-body">
+                            
+                            <h4>Teresina</h4>
+                            <ol>
+                                {% for trb in teresina %}
+                                    <li>{{trb}}</li>
+                                {% endfor %}
+                            </ol>
+                            <h4>Picos</h4>
+
+                            <ol>
+                                {% for trb in picos %}
+                                    <li>{{trb}}</li>
+                                {% endfor %}
+                            </ol>
+
+                            <h4>Parnaíba</h4>
+
+                            <ol>
+                                {% for trb in parnaiba %}
+                                    <li>{{trb}}</li>
+                                {% endfor %}
+                            </ol>
+
+                            <h4>Floriano</h4>
+
+                            <ol>
+                                {% for trb in floriano %}
+                                    <li>{{trb}}</li>
+                                {% endfor %}
+                            </ol>
+
+
+                            <h4>Bom Jesus</h4>
+
+                            <ol>
+                                {% for trb in bomjesus %}
+                                    <li>{{trb}}</li>
+                                {% endfor %}
+                            </ol>
+
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+{% endblock %}

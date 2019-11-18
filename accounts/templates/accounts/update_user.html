@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Semex | Perfil {% endblock %}
+{% block body %}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		Perfil
+		<small>Usuário</small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">Perfil</li>
+	</ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+	<div class="row">
+		<div class='col-md-12'>
+			<div class="box box-primary">
+				<form action="." class="form-group" method="post" enctype="multipart/form-data">{% csrf_token %}
+					<div class="box-body">
+						{% for field in form %}
+						{% if field.errors %}
+						<div class="form-group error" >
+							<label class="control-label" >{{ field.label }}</label>
+							{{ field|add_class:"form-control input-md" }}
+							{% for error in field.errors%}
+							<span class="help-inline error">{{ error}}</span>
+							{% endfor%}
+						</div>
+						{%else%}
+						<div class="form-group">
+							<label class="control-label" >{{ field.label }}</label>
+							{{ field|add_class:"form-control input-md" }}
+						</div>
+						{%endif%}
+						{% endfor %}
+						<div class="box-footer">
+							<a class="btn btn-danger pull-right" href="{% url 'core:index' %}" style="font-weight: bold;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+
+							<button type="submit" class="btn btn-success pull-right" style="font-weight: bold;margin-right: 10px"><i class="fa fa-check" aria-hidden="true"></i> Atualizar </button>
+							
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</section>
+{% endblock %}

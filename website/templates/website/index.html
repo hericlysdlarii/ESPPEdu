@@ -1,0 +1,30 @@
+{% extends 'base_public.html' %}
+{% load staticfiles %}
+{% block title %}ESPPEdu | Home{% endblock %}
+
+{% block body %}
+    <div class="widewrapper main">
+
+    <section class="gray-bg section-padding">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-8 blog-main">
+
+                    <h2><strong>Principais Publicações</strong></h2>
+                    
+                    {% if posts.count == 0 %}
+                        <div style="text-align:center" class="jumbotron">
+                            <h2>Nenhum artigo publicado!</h2>
+                        </div>
+                    {% endif %}
+                            
+                    
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

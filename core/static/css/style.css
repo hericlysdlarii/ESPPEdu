@@ -1,0 +1,240 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v37/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 54px;
+  line-height: 1;
+  padding-top: 16px;
+
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: -10px;
+}
+
+.cent{
+  position: relative;
+  margin-left: center;
+  margin-right: center;
+  text-align: center;
+}
+
+.btn-size{
+  margin: 7px 5px 7px 5px;
+}
+
+.nav-inline li{
+  display: inline;
+}
+
+.nav-dist-btn{
+  margin-right: 5px;
+}
+
+.inline-c{
+  display: inline;
+}
+
+@media(max-width: 770px){
+  .space-r{
+    margin-top: 7px;
+  }
+}
+
+.space-tabs{
+  margin-bottom: 3rem; 
+  margin-top: 3rem;
+}
+
+.space-top{
+  margin: 2rem 0rem 2rem 0rem;
+}
+
+.space-form2{
+  margin: 0 0 3rem 0;
+}
+
+
+
+/*.vertical-text {
+  max-width: 5px;
+  white-space: nowrap;
+  -webkit-transform: rotate(-90deg); 
+  -moz-transform: rotate(-90deg);
+
+  background:transparent !important;
+  background: rgba(255,255,255,0);
+}*/
+
+/*.rotate-cells th{
+  height: 160px;
+  max-height: 20px;
+}
+
+.rotate-cells th > span{
+  position: relative;
+  top: -60px;
+  left: -55px;
+}
+
+.cent{
+  position: relative;
+  margin-left: center;
+  margin-right: center;
+  text-align: center;
+}
+
+.alig-cell{
+  vertical-align: middle !important;
+}
+*/
+.espaco-0 td, .espaco-0 th {
+  padding: 5px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+
+/*body { background: #99cc33 }*/
+
+/*@media print {
+  * {
+    background:transparent !important;
+    color:#000 !important;
+    text-shadow:none !important;
+    filter:none !important;
+    -ms-filter:none !important;
+  }
+}*/
+
+.header-print{
+  display: none;
+}
+
+.footer-print{
+  display: none;
+}
+
+@page  
+{ 
+  size: auto;
+  margin: 7mm 7mm 7mm 7mm;  
+}
+
+@media print {
+  .header-print{
+    display: inline;
+  }
+  .footer-print{
+    display: inline;
+    position: block;
+    bottom: 0;
+    right: 33%;
+    margin-top: 130px!important;
+  }
+  .print-data tbody > tr > td{
+    font-size: 8pt;
+  }
+  .print-data thead > tr > th{
+    font-size: 8pt;
+  }
+  .img-teste{
+    width: 55%;
+    height: 55%;
+  }
+}
+
+.alig-header{
+  position: relative;
+  margin-left: 200px;
+}
+
+.cent{
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.small-padding td {
+  padding: 0 !important;
+}
+
+.center { text-align: center; }
+
+.center-total tr td:nth-child(2) { text-align: center; }
+
+.tit-table{
+  border: dashed 1px #000; 
+  padding: 5px 5px 4px 4px; 
+  text-align: center;
+  margin: 0;
+  font-size: 1.0rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.tit-table-tr{
+  padding: 5px 5px 4px 4px; 
+  text-align: left;
+  margin: 0;
+  
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.tit-tr-normal, .tit-tr-normal th{
+  padding: 5px 5px 4px 4px; 
+  text-align: center;
+  margin: 0;
+  font-size: 1.0rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.dist-tit-table{
+  margin-top: -2rem;
+}
+
+.table-bordered-d {
+  border: 1px dashed #ddd;
+}
+
+.table-bordered-d > thead > tr > th,
+.table-bordered-d > tbody > tr > th,
+.table-bordered-d > tfoot > tr > th,
+.table-bordered-d > thead > tr > td,
+.table-bordered-d > tbody > tr > td,
+.table-bordered-d > tfoot > tr > td {
+  border: 1px dashed #ddd;
+}
+
+.table-striped-d > tbody > tr:nth-child(odd) > td,
+.table-striped-d > tbody > tr:nth-child(odd) > th {
+  background-color: #dedede;
+}
+
+/* Imagens no botoes de ADD e Delelte FORMSET */
+.add-row {
+    display:block;
+    padding-left:18px;
+    background:url('../formset/images/add.png') no-repeat left center;
+}
+.delete-row {
+    display:block;
+    margin:6px 0 0 0;
+    padding-left:18px;
+    background:url('../formset/images/delete.png') no-repeat left center;
+}

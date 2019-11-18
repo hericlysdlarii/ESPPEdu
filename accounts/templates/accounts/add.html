@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block body %}
+
+<div class="content">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h3>Cadastro de Participante</h3>
+			<div class="box box-primary">
+				<form action="." class="form-group" method="post">{% csrf_token %}
+					<div class="box-body">
+						{% for field in form %}
+						{% if field.errors %}
+								
+							{% if field.name in 'is_whatsapp\commitment' or field.name in 'is_staff\commitment'%}
+
+								<div class="checkbox col-md-4 margin-bottom-15 has-error has-feedback">
+									<label>
+										<input type="checkbox" name="{{ field.name }}" id="id_{{ field.name }}" {% if field.value %} checked {% endif %}> {{ field.label }}
+										{% for error in field.errors%}
+										<span class="help-inline error">{{ error}}</span>
+
+										{% endfor%}
+									</label>
+									
+									<div><br></div>
+								</div>
+								
+							{%else%}
+
+								<div class="form-group col-md-4 margin-bottom-15 has-error has-feedback">
+									<label class="control-label" >{{ field.label }}</label>
+									{{ field|add_class:"form-control input-md" }}
+									{% for error in field.errors%}
+										<span class="help-inline error">{{ error}}</span>
+									{% endfor %}
+								</div>
+							{%endif%}
+							
+
+						{%else%}
+							{% if field.name in 'is_whatsapp\commitment' or field.name in 'is_staff\commitment'%}
+
+								<div class="checkbox col-md-4 margin-bottom-15">
+									<label>
+										<input type="checkbox" name="{{ field.name }}" id="id_{{ field.name }}" {% if field.value %} checked {% endif %}> {{ field.label }}
+									</label>
+									<div><br></div>
+								</div>
+								
+							{%else%}
+
+								<div class="form-group col-md-4 margin-bottom-15">
+									<label class="control-label" >{{ field.label }}</label>
+									{{ field|add_class:"form-control input-md" }}
+								</div>
+							{%endif%}
+						{%endif%}
+						{% endfor %}
+						
+					</div>
+					<div class="box-footer">
+						<button type="submit" class="btn btn-success" style="font-weight: bold;"><i class="fa fa-check" aria-hidden="true"></i> Salvar </button>
+						<a class="btn btn-danger pull-right" href="{% url 'accounts:list_user' %}" style="font-weight: bold;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+{{ block.super }}
+{{ form.media }}
+
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#id_birth_date").datepicker({
+		format: "dd/mm/yyyy",
+		todayBtn: "linked",
+		language: "pt-BR",
+		autoclose: true,
+		todayHighlight: true
+	});
+	$('#id_phone').mask('(00) 0 0000-0000');
+	$('#id_cpf').mask('000.000.000-00');
+	$('#id_birth_date').mask('00/00/0000');
+});
+
+var equipe = document.getElementById('id_is_staff');
+
+</script>
+{% endblock %}

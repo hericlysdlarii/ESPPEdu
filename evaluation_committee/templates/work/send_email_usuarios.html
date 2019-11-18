@@ -1,0 +1,66 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+      .borda td{
+        padding: 10px;
+      }
+      .borda2{
+        padding: 10px;
+      }
+      .borda3{
+        padding: 10px;
+      }
+      .img-space img{
+        padding-right: 15px;
+      }
+      .btn{
+      text-decoration: none;
+      width: 250px;
+      background-color: #aaa;
+      color: #fff;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      font-size: 30px;
+      line-height: 2;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      }
+    </style>
+</head>
+<body>
+  <div width="100%" align="center" style="background:#eee; padding:15px;" >
+    <table border="0" bgcolor="#FFFFFF" width="70%">
+      <tr bgcolor="#aaa" height="90px" width="90px" align="center" valign="center">
+        <!--<td colspan="2"><img src="https://s32.postimg.org/u5hyj1d79/logo_120_x_120.png" alt=""></td> -->
+        <td colspan="2"><img src="https://semex.ufpi.br/static/img/logo_120_x_120.png" alt=""></td>
+      </tr>
+      <tr bgcolor="#FFFFFF" align="left" valign="center" class="borda">
+        <td colspan="2">
+          <strong><p style="font-size: 25px;text-align: center;">Validação da Inscrição da Nona Edição do SEMEX!</p></strong>
+          <p>Prezado(a), </p><br>
+          <p style="font-size: 15px;">Devido as recentes atualizações na plataforma SEMEX, pedimos encarecidamente que revise sua inscrição na Nona Edição do evento e verifique em qual campus você está inscrito.<br> 
+            Para verificar sua inscrição, navegue no menu 'Atividades' e no submenu 'Edição'. Caso seu campus não esteja correto ou vazio, clique em editar (botão amarelo), escolha o seu campus e clique em 'Salvar'. <br>
+            Caso apareça uma mensagem de 'Nehuma Inscrição Realizada', você deve efetuar uma nova inscrição (os trabalhos enviados não serão afetados). Clique no botão verde 'Nova' e escolha seu devido campus.</p>
+          </p>
+          <br>
+          <br>
+          <p>{% trans "Thanks for using our site!" %}</p>
+
+          <p>Este é um e-mail automático enviado pela {% blocktrans %}The STI/CSHNB - UFPI team{% endblocktrans %}, favor não responder.</p>
+        </td>
+      </tr>
+
+      <tr bgcolor="#aaa" height="100px" align="right" valign="center">
+        <td colspan="2" class="img-space">
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

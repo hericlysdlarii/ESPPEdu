@@ -1,0 +1,39 @@
+		<li class="header">Painel do Usuario</li>
+
+						<li class="treeview-menu">
+							<li><a href="#"><i class="fa fa-th"></i><span>Dashboard</span></a></li>
+
+						</li>
+
+						<li class="treeview-menu">
+							<li><a href="{% url 'evaluation_committee:list_work' %}"><i class="fa fa-pencil-square-o"></i><span>Minhas Submissões</span></a></li>
+
+						</li> 
+
+		</li> 
+
+		{% comment %} <li class="treeview">
+				<a href="#">
+					<i class="fa fa-university"></i> <span>Evento</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-right pull-right"></i>
+					</span>
+				</a> 
+				<ul class="treeview-menu">
+					<li><a href="{% url 'evaluation_committee:list_work' %}"><i class="fa fa-file"></i>Trabalhos</a></li>
+					<li><a href="{% url 'evaluation_committee:list_evaluation' %}"><i class="fa fa-clipboard"></i>Avaliações</a></li>
+				</ul>
+		</li> {% endcomment %}
+
+		<li class="treeview">
+				<a href="#">
+					<i class="fa fa-clipboard"></i><span>Atividades</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-right pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="{% url 'evaluation_committee:add_work' %}"><i class="fa fa-plus"></i>Nova Submissão</a></li>
+					<li><a href="{% url 'evaluation_committee:list_evaluation' %}"><i class="fa fa-plus"></i>Avaliações</a></li>
+				</ul>
+		</li>

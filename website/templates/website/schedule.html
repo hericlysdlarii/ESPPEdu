@@ -1,0 +1,1383 @@
+{% extends 'base_public.html' %}
+{% load staticfiles %}
+{% block title %}SEMEX | Programações{% endblock %}
+
+{% block header %}
+    <!--Header-area-->
+    <header class="header-area overlay full-height relative v-center">
+        <div class="absolute anlge-bg"></div>
+        <div class="container">
+            <div class="row v-center">
+                <div class="col-xs-12 col-md-12 text-center">
+                    <img src="{% static 'images/SIUFPI_site.png' %}" alt="">
+                    <h1>PROGRAMAÇÕES</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--Header-area/-->
+{% endblock %}
+
+{% block body %}
+
+    <section class="gray-bg section-padding" id="register-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+                    <div class="page-title">
+                      <h2>PROGRAMAÇÕES</h2>
+                      <p>A seguir estão as programações de cada Campus para o evento</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+
+                  <h4 class="text-center">PROGRAMAÇÃO DO EVENTO – Campus Ministro Petrônio Portella</h4><br/>
+
+                  <!-- Campus Ministro Petrônio Portella - 06 de novembro -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="3" scope="col" class="text-center">06 de novembro de 2018 (Terça-feira)</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>14:00 h às 17:00 h</td>
+                            <td>Credenciamento</td>
+                            <td>Cine Teatro UFPI</td>
+                          </tr>
+                          <tr>
+                            <td>17:30h às 18:20 h</td>
+                            <td>Boas Vindas Cultural: Apresentação da Orquestra Jazz Sinfônica da UFPI</td>
+                            <td>Cine Teatro UFPI</td>
+                          </tr>
+                          <tr>
+                            <td>18:20 h às 19:10 h</td>
+                            <td>Solenidade de Abertura do Evento</td>
+                            <td><strong>Todos os Campi</strong></td>
+                          </tr>
+                          <tr>
+                            <td>19:10 h às 19:20 h</td>
+                            <td>Lançamento do Programa institucional de Bolsas para Orquestra e Coral da UFPI</td>
+                            <td class="text-center"> - </td>
+                          </tr>
+                          <tr>
+                            <td>19:20 h</td>
+                            <td>
+                              <strong>Conferência de abertura sobre Pesquisa e Extensão</strong>
+                              <br/>Palestrante: Prof. Dr. Klaws Werner Capelle - UFABC
+                            </td>
+                            <td>Cine Teatro UFPI</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <!-- Campus Ministro Petrônio Portella - 07 de novembro - Manhã -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">07 de novembro de 2018 (Quarta-feira) – Manhã</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Responsável</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td rowspan="5">08:00 h às 12:00 h</td>
+                            <td>Mesa Redonda1: Da gratuidade à captação de recursos: desafios da extensão na atualidade</td>
+                            <td>
+                              - Etevaldo Almeida Silva UFRN
+                              <br/>- Maria da Cruz Soares da Cunha Laurentino – UESPI
+                            </td>
+                            <td>Sala de aula <br/>Prédio Moda - 50 vagas</td>
+                          </tr>
+                          <tr>
+                            <td>Mesa Redonda 2: Pesquisador, Formador e Extensionista. Por que não?</td>
+                            <td>
+                              - Marlúcia Valéria da Silva – CCHL/UFPI
+                              <br/>- Nadege da Silva Dantas - UFCG
+                              <br/>-Divamélia de Oliveira Bezerra Gomes - IFPI
+                            </td>
+                            <td>Sala de aula <br/>Prédio Moda - 50 vagas</td>
+                          </tr>
+                          <tr>
+                            <td>Mesa Redonda 3: A comunidade na universidade, a universidade na comunidade: vivências e desafios</td>
+                            <td>
+                              - Suely Carvalho Santiago Barreto – CCS/UFPI
+                              <br/>- Marly Clementino Gonçalves – DEFE/UFPI
+                              <br/>- João Luís Vieira de Sousa - Assentamento Vale da Esperança
+                            </td>
+                            <td>Sala de aula <br/>Prédio Moda - 50 vagas</td>
+                          </tr>
+                          <tr>
+                            <td>Mesa Redonda 4: Trilhando os caminhos da extensão pelo Piauí adentro: desafios e possibilidades</td>
+                            <td>- Albemerc Moura de Moraes – IPS
+                              <br/>- Maria Elizabete de Oliveira – CCA/UFPI
+                              <br/>- André Luis Menezes Carvalho – CCS/UFPI</td>
+                            <td>Sala de aula <br/>Prédio Moda - 50 vagas</td>
+                          </tr>
+                          <tr>
+                            <td>Mesa Redonda 5: A inserção da extensão no currrículo dos cursos de graduação da UFPI</td>
+                            <td>
+                              - Profª Cleânia de Sales Silva - PREXC
+                              <br/>- Profª Romina Julieta Sanchez Paradizo - PREG
+                              <br/>- Mediadora: Profª Patrícia Maria G. de Carvalho – CCS
+                            </td>
+                            <td>Sala de aula <br/>Prédio Moda - 50 vagas</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <!-- Campus Ministro Petrônio Portella - 07 de novembro - Tarde -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">07 de novembro de 2018 (Quarta-feira) – Tarde</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Responsável</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td rowspan="5">14:00 h às 18:00 h</td>
+                            <td>Oficina de Extensão I: Práticas de Educação Ambiental</td>
+                            <td>- Patrícia Maria Martins Napolis – CCN/UFPI</td>
+                            <td>Auditório da CAC</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina de Extensão II: Saberes e práticas da Educação pela Paz: Prevenção e combate ao bulling e crimes da internet</td>
+                            <td>- Delegado Daniel Alves - PC
+                              <br/>- Rosa Maria de Almeida Macedo – DEFE/CCE</td>
+                            <td>Cine Teatro</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina de Extensão III: Experiências de saberes populares na formação universitária: Sementes de vida e soberania alimentar</td>
+                            <td>
+                              - Ulisses Beserra de Alburquerque - Assentamento Vale da Esperança
+                              <br/>- Karla Karine Fernandes Lima – Assentamento Vale da Esperança
+                            </td>
+                            <td>PREXC</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina de Extensão IV: Experiências de saberes populares na formação universitária: Artesanato sustentável</td>
+                            <td>- Maria Perpetuo Socorro Alves de Miranda Sá – Assentamento Vale da Esperança</td>
+                            <td>PREXC</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina de Extensão V: Ligas acadêmicas: um programa especial de extensão</td>
+                            <td>
+                              - Lucas Cabral dos Santos Miranda – CA - Medicina
+                              <br/>- Marcos Antônio Tavares Lira – PREXC
+                            </td>
+                            <td>PREXC</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <!-- Campus Ministro Petrônio Portella - 08 de novembro - Manhã -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">08 de novembro de 2018 (Quinta-feira) – Manhã</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Mesa Avaliadora</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td rowspan="4">8:00 h às 12:00 h</td>
+                            <td>Apresentação de Pôsteres: Área I – Projetos Culturais</td>
+                            <td>A definir</td>
+                            <td>Rosa dos Ventos</td>
+                          </tr>
+                          <tr>
+                            <td>Apresentação de Pôsteres: Área II –Saúde</td>
+                            <td>A definir</td>
+                            <td>Rosa dos Ventos</td>
+                          </tr>
+                          <tr>
+                            <td>Apresentação de Pôsteres: Área III – Educação</td>
+                            <td>A definir</td>
+                            <td>Rosa dos Ventos</td>
+                          </tr>
+                          <tr>
+                            <td>Apresentação de Pôsteres: Área IV – Outros</td>
+                            <td>A definir</td>
+                            <td>Rosa dos Ventos</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <!-- Campus Ministro Petrônio Portella - 08 de novembro - Tarde -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">08 de novembro de 2018 (Quinta-feira) – Tarde</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Comitê Avaliador</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td rowspan="4">14:00 h às 18:00 h</td>
+                            <td>Sessão de Apresentações Orais: Área I – Projetos Culturais</td>
+                            <td>A definir</td>
+                            <td>PREXC</td>
+                          </tr>
+                          <tr>
+                            <td>Sessão de Apresentações Orais: Área II – Saúde</td>
+                            <td>A definir</td>
+                            <td>PREXC</td>
+                          </tr>
+                          <tr>
+                            <td>Sessão de Apresentações Orais: Área III – Educação</td>
+                            <td>A definir</td>
+                            <td>PREXC</td>
+                          </tr>
+                          <tr>
+                            <td>Sessão de Apresentações Orais: Área IV – Outros</td>
+                            <td>A definir</td>
+                            <td>Auditório da CAC</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <!-- Campus Ministro Petrônio Portella - 09 de novembro - Manhã -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">09 de novembro de 2018 (Sexta-feira) – Manhã</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td rowspan="4">8:00 h às 12:00 h</td>
+                            <td>Exposição de Produtos / Serviços da Comunidade / Danças / Artesanatos Apresentação cultural</td>
+                            <td>Rosa dos Ventos</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <!-- Campus Ministro Petrônio Portella - 09 de novembro - Tarde -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">09 de novembro de 2018 (Sexta-feira) – Tarde</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Responsável</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>14:00 h às 16:00 h</td>
+                            <td>Reunião do comitê científico para escolha dos melhores trabalhos</td>
+                            <td class="text-center"> - </td>
+                            <td>Sala de reuniões da PREXC</td>
+                          </tr>
+                          <tr>
+                            <td>16:00 h às 18:00 h</td>
+                            <td>Cerimônia de encerramento e Premiação dos melhores trabalhos.</td>
+                            <td>Comissão Organizadora</td>
+                            <td>Auditório do Centro de Tecnologia</td>
+                          </tr>
+                          <tr>
+                            <td>18:00 h</td>
+                            <td>Apresentação Cultural: Grupo Atlética</td>
+                            <td class="text-center"> - </td>
+                            <td class="text-center"> - </td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <br/>
+                  <h4 class="text-center">PROGRAMAÇÃO DA V MOSTRA DE COMUNIDADES</h4>
+                  <br/>
+
+                  <!-- Campus Ministro Petrônio Portella - 09 de novembro - Tarde -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">08 e 09 de novembro de 2018 (Quinta-feira e sexta-feira) – Manhã/Tarde</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Data</th>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Local</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>08/11/18</td>
+                            <td>8:00 h às 18:00 h</td>
+                            <td>
+                              Exposição de Produtos / Serviços da Comunidade / Danças / Artesanatos:
+                              <br/>- Feira Agroecológica
+                              <br/>- Ptia
+                              <br/>- Empresas Incubadoras / Incubadas
+                              <br/>- Teatro Metamorfose / ampliartes
+                              <br/>- quarta aumentada / orquestra de cordas
+                            </td>
+                            <td rowspan="2">Rosa dos ventos</td>
+                          </tr>
+                          <tr>
+                            <td>09/11/18</td>
+                            <td>8:00 às 12:00h</td>
+                            <td>Exposição de Produtos / Serviços da Comunidade / Danças / Artesanatos Apresentação cultural</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-area section-padding gray-bg overlay" id="program-page">
+        <div class="container">
+          <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+
+                  <h4 class="text-center">PROGRAMAÇÃO DO EVENTO – Campus Professora Cinobelina Elvas</h4><br/>
+
+                  <!-- 06 de novembro de 2018 (Terça-feira) - Tarde e Noite -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="3" scope="col" class="text-center">06 de novembro de 2018 (Terça-feira) - Tarde e Noite</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>14:00 h às 17:00 h</td>
+                            <td>Credenciamento</td>
+                            <td>Hall da Direção</td>
+                          </tr>
+                          <tr>
+                            <td>17:30h às 18:20 h</td>
+                            <td>Boas Vindas Cultural: Coral do CTBJ (Projeto de Extensão)</td>
+                            <td rowspan="3">Auditório Central - CPCE</td>
+                          </tr>
+                          <tr>
+                            <td>18:30 h às 18:50 h</td>
+                            <td>Boas Vindas Cultural: Coral do CTBJ (Projeto de Extensão)</td>
+                          </tr>
+                          <tr>
+                            <td>18:50 h às 19:20 h</td>
+                            <td>Solenidade de Abertura do Evento</td>
+                          </tr>
+                          <tr>
+                            <td>19:20 h às 19:30</td>
+                            <td>Lançamento do PIBIC e PIBIT 2019-2020</td>
+                          </tr>
+                          <tr>
+                            <td>19:30 h às 21:00 h</td>
+                            <td>
+                              Mesa Resonda: <strong>INDISSOCIABILIDADE ENTRE ENSINO, PESQUISA E EXTENSÃO</strong>
+                              <br/>Prof. Dr. Marcelo Casimiro (UFRPE/UAST)
+                              <br>Prof. Dr. Ítalo Hebert Lucena Cavalcanti (UNIVASF)
+                              <br/>Mestrando Francisco Almir Campelo Monte Júnior (Engenheiro Agrônomo)
+                              <br/>Altamiran Lopes Ribeiro (Coordenação da CPT- Piauí/Discente da LEDOC) - Representante Movimento Social
+                              <br/>Mediador: Professor Gustavo Pereira
+                            </td>
+                            <td>Auditório Central - CPCE</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <!-- 07 de novembro de 2018 (Quarta-feira) – Manhã e Tarde -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">07 de novembro de 2018 (Quarta-feira) – Manhã e Tarde</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação**</th>
+                            <th scope="col">Responsável</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td colspan="4" class="text-center"><strong>Sessões Culturais</strong></td>
+                          </tr>
+                          <tr>
+                            <td>08:00 h às 11:00 h</td>
+                            <td>
+                              Cinema - Título do filme: “O meino e o mundo”
+                            </td>
+                            <td>Prof. Dr. Ozaías Antônio Batista</td>
+                            <td>Auditório Central do CPCE</td>
+                          </tr>
+                          <tr>
+                            <td>13:00 h às 15:00 h</td>
+                            <td>
+                              Museu da Memória Camponesa
+                            </td>
+                            <td class="text-center"> - </td>
+                            <td>Hall do Direção Salão Nobre</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4" class="text-center"><strong>Oficinas</strong></td>
+                          </tr>
+                          <tr>
+                            <td rowspan="7">08:00 h às 18:00 h</td>
+                            <td>Oficina 1:<strong> Teatro político: construindo cenas de desopressão</strong></td>
+                            <td>Profª. Drª. Kelci Anne Pereira</td>
+                            <td>Sala 19 </td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 2:<strong> Técnicas de Bioconstrução, fabricação de geodésica, manejo de SAF e costura de palha para coberturas**</strong></td>
+                            <td>
+                              Prof. Me. Caio de Meneses Cabral
+                              <br/>Prof. Dr. Marcelo Casimiro
+                              <br/>Discente Wilkinson Gabriel Miranda
+                            </td>
+                            <td>SAF - CPCE </td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 3:<strong> A arte do crochê</strong></td>
+                            <td>Helena Rosa de Jesus Lacerda </td>
+                            <td>Sala 17 (Bloco 101)</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 4:<strong> Biojóias e Artesanato</strong></td>
+                            <td>Mulheres da Comunidade Gruta Bela</td>
+                            <td>Sala 34 (manhã) <br/>Sala 15 (tarde)</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 5:<strong> Topografia com drone</strong></td>
+                            <td>
+                              Prof. Dr. Doze Batista de Oliveira
+                              <br/>Discente Lucas Ruaro Bublitz
+                            </td>
+                            <td>Sala 31 (manhã)<br/>Sala 32 (tarde)</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 6:<strong> Alternativas de controle de Verminoses gastrintestinal de pequenos ruminantes<strong></td>
+                            <td>Prof. Dr. Luís Ricardo Romero</td>
+                            <td>Sala 01 Pós</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 7:<strong> Aquiponia e segurança alimentar</strong></td>
+                            <td>Prof. Dr. Davi Lima Pantoja Leite</td>
+                            <td>Sala 02 Pós</td>
+                          </tr>
+
+
+                          <tr>
+                            <td rowspan="4">08:00 h às 18:00 h</td>
+                            <td>Oficina 8:<strong> Periódicos e Currículo Lattes</strong></td>
+                            <td>Prof. Dr. Alexandre Faria da Silva</td>
+                            <td>Auditório I (Pós)</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 9:<strong>Aplicação da Geoestatistica em Ciências Agrárias<strong></td>
+                            <td>Prof. Dr. Ronie Silva Juvanhol</td>
+                            <td>Laboratório de Dados II</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 10:<strong> História e Cultura Afrobrasileira<strong></td>
+                            <td>Prof. Me. Francisco Helton de Araújo</td>
+                            <td>Sala 03 Pós</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 11:<strong> Avaliação da qualidade fisiológica de sementes através de testes rápidos</strong></td>
+                            <td>Profa. Dra. Juliana Joice Pereira de Lima</td>
+                            <td>Sala 04 Pós</td>
+                          </tr>
+                          <tr>
+                            <td rowspan="6">14:00 h às 18:00 h</td>
+                            <td>Oficina 12:<strong> Hanseníase: desafios e estratégias de controle para o terceiro milênio</strong></td>
+                            <td>Profa. Dra. Glenda Lídice de Oliveira Cortez Marinho <br/>Elke Taline Alencar Cavalcante Oliveira (Coordenadora de Vigilância e Saúde do Município)</td>
+                            <td>Sala 01 (Pós)</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 13:<strong> Uso de gerenciadores de referências bibliográficas<strong></td>
+                              <td>Prof. Dr. Davi Lima Pantoja Leite</td>
+                              <td>Sala 02 (Pós)</td>
+                            </tr>
+                          <tr>
+                            <td>Oficina 14:<strong> Agroecologia e cultivo orgânico Solos</strong></td>
+                            <td>Dra. Ruthanna Isabelle de Oliveira</td>
+                            <td>Sala 03 (Pós)</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 15:<strong> Filtro dos sonhos: confecção e significado</strong></td>
+                            <td>Caroline Carneiro Marques</td>
+                            <td>Sala 04 (Pós)</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 16:<strong> Dimensionamento de sistemas de irrigação localizada</strong></td>
+                            <td>Prof. Dr. José Orlando Piauilino</td>
+                            <td>Auditório I (Pós)</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 17:<strong> O uso das ferramentas do google na prática discente</strong></td>
+                            <td>Profa. Me. Ana Alice Salmito Nolêto de Campos Ferreira</td>
+                            <td>Laboratório de Dados II</td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  <p><strong>* A inscrição nas oficinas estará disponível no momento do credenciamento. O preenchimento das vagas acontecerá respeitando a ordem de credenciamento, ficando disponíveis 10% das vagas de cada oficina para participantes que não sejam vinculados à UFPI. </strong></p>
+
+                  <p><strong>**A oficina “Técnicas de Bioconstrução, fabricação de geodésica, manejo de SAF e costura de palha
+                  para coberturas” acontecerá nos dias 07, 08 e 09 de novembro de 2018.</strong></p>
+
+                  <!-- 08 de novembro de 2018 (Quinta-feira) – Manhã e Tarde -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="3" scope="col" class="text-center">08 de novembro de 2018 (Quinta-feira) – Manhã e Tarde</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td rowspan="5">8:00 h às 12:00 h</td>
+                            <td><strong>SEMEX:</strong> Sessão de Apresentações Orais: Área I – Projetos Culturais e Educação</td>
+                            <td>Sala 01 (Pós)</td>
+                          </tr>
+                          <tr>
+                            <td><strong>SEMEX:</strong> Sessão de Apresentações Orais: Área II – Saúde e Outros</td>
+                            <td>Sala 02 (Pós)</td>
+                          </tr>
+                          <tr>
+                            <td><strong>SIC:</strong> Apresentações Orais: Grupo 1: Ciências Agrárias</td>
+                            <td>Auditório 1 (Pós)</td>
+                          </tr>
+                          <tr>
+                            <td><strong>SIC:</strong> Apresentações Orais: Grupo 2: Ciências Biológicas</td>
+                            <td>Auditório 2 (Pós)</td>
+                          </tr>
+                          <tr>
+                            <td colspan="2" class="text-center">Feira da Agricultura Familiar</td>
+                          </tr>
+                          <tr>
+                            <td>8:00 h às 10:00 h</td>
+                            <td>
+                              <strong>Rodas de Conversa</strong>
+                              <br/>Captando Recursos para Projetos de Extensão
+                            </td>
+                            <td>Sala 03 (Pós)</td>
+                          </tr>
+                          <tr>
+                            <td>8:00 h às 11:30 h</td>
+                            <td>
+                              <strong>Museu da Memória Camponesa</strong>
+                            </td>
+                            <td>Hall do Direção Salão Nobre</td>
+                          </tr>
+                          <tr>
+                            <td rowspan="4">14:30 h às 16:30 h</td>
+                            <td colspan="2"><strong>Reunião do comitê científico para escolha dos melhores trabalhos (SIC e SEMEX)</strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Apresentação de Pôsteres: SEMEX e SIC</strong></td>
+                            <td>Pátio do RU</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <strong>Rodas de Conversa</strong>
+                              <br/>II – Saúde Única
+                              <br/>III - Agrotóxicos
+                            </td>
+                            <td>Sala 01 (Pós) <br/>Sala 02 (Pós)</td>
+                          </tr>
+                          <tr>
+                            <td>Mostra de Comunidades</td>
+                            <td>CPCE</td>
+                          </tr>
+                          <tr>
+                            <td rowspan="3">08:00 h às 16:00 h</td>
+                            <td>Exposição de Arte e Fotografia</td>
+                            <td>Salão Nobre</td>
+                          </tr>
+                          <tr>
+                            <td>CURTA COM DEBATE
+                              <br/>Prof. Dr. Ozaías Antônio Batista
+                            </td>
+                            <td>Auditório Central do CPCE</td>
+                          </tr>
+                          <tr>
+                            <td>VARANDA TROCA DE SABERES</td>
+                            <td>CPCE</td>
+                          </tr>
+                          <tr>
+                            <td>17:00 h às 18:30 h</td>
+                            <td>
+                              Cerimônia de Encerramento e Premiação
+                              <br/>Apresentação Cultural: Teatro político – Cenas Camponesas (Projeto de Estensão)
+                            </td>
+                            <td>CPCE</td>
+                          </tr>
+                          <tr>
+                            <td>18:30 h às 22:00 h</td>
+                            <td>Show com artistas locais</td>
+                            <td class="text-center"> - </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="gray-bg section-padding" id="register-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+
+                  <h4 class="text-center">PROGRAMAÇÃO DO EVENTO – Campus Ministro Reis Velloso</h4><br/>
+
+                  <!-- 06 de novembro de 2018 (Terça-feira) -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="3" scope="col" class="text-center">06 de novembro de 2018 (Terça-feira)</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>14:00 h às 18:00 h</td>
+                            <td>Credenciamento</td>
+                            <td>Auditório Central</td>
+                          </tr>
+                          <tr>
+                            <td>18:20 h às 19:10 h</td>
+                            <td>Solenidade de Abertura do Evento</td>
+                            <td>Auditório Central</td>
+                          </tr>
+                          <tr>
+                            <td>19:20 h</td>
+                            <td>Palestra sobre os dados da Extensão e Pesquisa.</td>
+                            <td>Auditório Central</td>
+                          </tr>
+                          <tr>
+                            <td>21:00 h</td>
+                            <td>Aperitivo Cultural</td>
+                            <td>Frente a Biblioteca</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <!-- 07 de novembro de 2018 (Quarta-feira) – Manhã -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">07 de novembro de 2018 (Quarta-feira) – Manhã</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Responsável</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td rowspan="2">08:00 h às 12:00 h</td>
+                            <td>Oficina 1: Plantas Alimentícias não Convencionais - Sabores</td>
+                            <td>Profª Ivanilza</td>
+                            <td>Sala a definir - 30 vagas</td>
+                          </tr>
+                          <tr>
+                            <td>Oficina 2: Fitoterapicos(plantas medicinais - HortoMedflora)</td>
+                            <td>Profª Ivanilza</td>
+                            <td>Sala a definir - 30 vagas</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <!-- 07 de novembro de 2018 (Quarta-feira) – Tarde -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">07 de novembro de 2018 (Quarta-feira) – Tarde</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Responsável</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td rowspan="4">14:00 h às 18:00 h</td>
+                          <td>Oficina 3: Produção audiovisual na educação: elementos para pensar uma educação emancipatória.</td>
+                          <td>Profº. Samuel Pires</td>
+                          <td>Sala a definir - 50 vagas</td>
+                        </tr>
+                        <tr>
+                          <td>Oficina 4: O xadrez utilizado como ferramenta pedagógica para ensinar matemática.</td>
+                          <td>Profº. Samuel Pires</td>
+                          <td>Sala a definir - 30 vagas</td>
+                        </tr>
+                        <tr>
+                          <td>Oficina 5: Xadrez e a matemática somando na escola.</td>
+                          <td>Profº Israel</td>
+                          <td>Auditório Oeste</td>
+                        </tr>
+                        <tr>
+                          <td>Oficina 6: Utilização do Lúdico como Ferramenta para o Parendizado de Parasitologia</td>
+                          <td>Profª. Karina Rodrigues dos Santos</td>
+                          <td>Sala a definir - 30 vagas</td>
+                        </tr>
+                        <tr>
+                          <td>18:30 h às 21:00h</td>
+                          <td>Aperitivo Cultural</td>
+                          <td>A definir</td>
+                          <td>Frente a biblioteca</td>
+                        </tr>
+                      </tbody>
+                  </table>
+
+                  <!-- 08 de novembro de 2018 (Quinta feira) – Manhã -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">08 de novembro de 2018 (Quinta-feira) – Manhã</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Mesa Avaliadora</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td rowspan="4">14:00 h às 18:00 h</td>
+                            <td>Apresentação de Pôsteres: Área I – Projetos Culturais</td>
+                            <td>A definir</td>
+                            <td>Quadra Poliesportiva</td>
+                          </tr>
+                          <tr>
+                            <td>Apresentação de Pôsteres: Área II –Saúde</td>
+                            <td>A definir</td>
+                            <td>Quadra Poliesportiva</td>
+                          </tr>
+                          <tr>
+                            <td>Apresentação de Pôsteres: Área III – Educação</td>
+                            <td>A definir</td>
+                            <td>Quadra Poliesportiva</td>
+                          </tr>
+                          <tr>
+                            <td>Apresentação de Pôsteres: Área IV – Outros</td>
+                            <td>A definir</td>
+                            <td>Quadra Poliesportiva</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <!-- 08 de novembro de 2018 (Quinta feira) – Tarde -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">08 de novembro de 2018 (Quinta feira) – Tarde</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Comitê Avaliador</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td rowspan="4">14:00 h às 18:00 h</td>
+                            <td>Sessão de Apresentações Orais: Área I – Projetos Culturais</td>
+                            <td>A definir</td>
+                            <td>Sala a definir</td>
+                          </tr>
+                          <tr>
+                            <td>Sessão de Apresentações Orais: Área II – Saúde</td>
+                            <td>A definir</td>
+                            <td>Sala a definir</td>
+                          </tr>
+                          <tr>
+                            <td>Sessão de Apresentações Orais: Área III – Educação</td>
+                            <td>A definir</td>
+                            <td>Sala a definir</td>
+                          </tr>
+                          <tr>
+                            <td>Sessão de Apresentações Orais: Área IV – Outros</td>
+                            <td>A definir</td>
+                            <td>Sala a definir</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <!-- 09 de novembro de 2018 (Sexta -feira) – Tarde -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">09 de novembro de 2018 (Sexta -feira) – Tarde</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Responsável</th>
+                            <th scope="col">Local</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>8:00 h às 17:00 h</td>
+                            <td>Oficina5: Empresa Junior na UFPI.</td>
+                            <td>Profº Miguel Cavalcante</td>
+                            <td>Auditório Oeste - 30 vagas</td>
+                          </tr>
+                          <tr>
+                            <td>17:20 h às 18:00 h</td>
+                            <td>Reunião do Comitê Interno, Cerimônia de encerramento e Premiação dos melhores trabalhos.</td>
+                            <td>Comissão Organizadora</td>
+                            <td>Auditório Central</td>
+                          </tr>
+                          <tr>
+                            <td>18:30 h às 21:00 h</td>
+                            <td>Aperitivo Cultural</td>
+                            <td>A definir</td>
+                            <td>Frente a biblioteca</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <br/>
+                  <h4 class="text-center">PROGRAMAÇÃO DA V MOSTRA DE COMUNIDADES</h4>
+                  <br/>
+
+                  <!-- Campus Ministro Petrônio Portella - 09 de novembro - Tarde -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="4" scope="col" class="text-center">07 de novembro de 2018 (quarta- feira) – Manhã/Tarde</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">Data</th>
+                            <th scope="col">Horário</th>
+                            <th scope="col">Programação</th>
+                            <th scope="col">Local</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>07/11/18</td>
+                            <td>8:00 h às 18:00 h</td>
+                            <td>
+                              Feira Laços de Cidadania <br/>Exposição de Produtos / Serviços da Comunidade / Danças / Artesanatos / cartilhas
+                            </td>
+                            <td rowspan="2">Frente Auditório Central</td>
+                          </tr>
+                          <tr>
+                            <td>09/11/18</td>
+                            <td>8:00 às 18:00h</td>
+                            <td>Lançamento de Cartilha, material oriundo de projeto de extensão. (Profª. Sandra Helena)</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-area section-padding gray-bg overlay" id="program-page">
+        <div class="container">
+          <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+
+                <h4 class="text-center">PROGRAMAÇÃO Campus Amílcar Ferreira Sobral (CAFS) - UFPI – FLORIANO</h4><br/>
+
+                <!-- 06 de novembro de 2018 (Terça-feira) -->
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                          <th colspan="3" scope="col" class="text-center">06 de novembro de 2018 (Terça-feira)</th>
+                        </tr>
+                        <tr>
+                          <th scope="col">Horário</th>
+                          <th scope="col">Programação</th>
+                          <th scope="col">Local</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td>14:00 h às 17:00 h</td>
+                          <td>Credenciamento</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>17:30h às 18:20 h</td>
+                          <td>Boas Vindas Cultural: Apresentação Musical</td>
+                          <td>Auditório CTF</td>
+                        </tr>
+                        <tr>
+                          <td>18:20 h às 19:10 h</td>
+                          <td>Solenidade de Abertura do Evento</td>
+                          <td><strong>Todos os Campi</strong></td>
+                        </tr>
+                        <tr>
+                          <td>19:30 h</td>
+                          <td>
+                            <strong>Conferência de Abertura: Ensino, pesquisa e extensão na Educação Superior</strong>
+                            <br/>Palestrante: A definir
+                          </td>
+                          <td>Auditório CTF</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 07 de novembro de 2018 (Quarta-feira) – Manhã -->
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                          <th colspan="4" scope="col" class="text-center">07 de novembro de 2018 (Quarta-feira) – Manhã</th>
+                        </tr>
+                        <tr>
+                          <th scope="col">Horário</th>
+                          <th scope="col">Programação</th>
+                          <th scope="col">Responsável</th>
+                          <th scope="col">Local</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td rowspan="5">08:00 h às 12:00 h</td>
+                          <td>Palestra I: Curricularização da Extensão nos Cursos de Graduação da UFPI</td>
+                          <td>Expositor: Assessor de Extensão - Nonato <br/>Moderador: A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Palestra II: Extensão e os desafios da captação de recursos</td>
+                          <td>Expositor: A definir <br/>Moderador: A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Palestra III: Reflexão sobre o cenário atual da educação no Brasil</td>
+                          <td>Expositor: A definir <br/>Moderador: A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Minicurso I: O papel da Extensão na formação do estudante da UFPI</td>
+                          <td>Prof. Dr. Jairo de Carvalho Guimarães - CAFS/UFPI</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Minicurso II: Educação Ambiental: desafios e perspectivas</td>
+                          <td>Prof. Dr. José Ribamar de Sousa Júnior – CAFS/UFPI</td>
+                          <td>A definir</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 07 de novembro de 2018 (Quarta-feira) – Tarde -->
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                          <th colspan="4" scope="col" class="text-center">07 de novembro de 2018 (Quarta-feira) – Tarde</th>
+                        </tr>
+                        <tr>
+                          <th scope="col">Horário</th>
+                          <th scope="col">Programação</th>
+                          <th scope="col">Responsável</th>
+                          <th scope="col">Local</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td rowspan="4">14:00 h às 18:00 h</td>
+                          <td>Oficina I: Produção de Materiais didáticos para Ensino de Biologia na Educação Básica</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Oficina II: Produção de Sabão: Uma alternativa sustentável para o desenvolvimento das comunidades</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Oficina III: Práticas de Conservação dos Recursos Genéticos Vegetais: Importância e uso na Agricultura Familiar</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Oficina IV: Práticas de Biologia Molecular no Ensino Médio: da Universidade para a Escola</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 08 de novembro de 2018 (Quinta feira) – Manhã -->
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                          <th colspan="4" scope="col" class="text-center">08 de novembro de 2018 (Quinta feira) – Manhã</th>
+                        </tr>
+                        <tr>
+                          <th scope="col">Horário</th>
+                          <th scope="col">Programação</th>
+                          <th scope="col">Mesa Avaliadora</th>
+                          <th scope="col">Local</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td rowspan="4">08:00 h às 12:00 h</td>
+                          <td>Apresentação de Pôsteres: Área I – Projetos Culturais</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Apresentação de Pôsteres: Área II –Saúde</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Apresentação de Pôsteres: Área III – Educação</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Apresentação de Pôsteres: Área IV – Outros</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 08 de novembro de 2018 (Quinta feira) – Tarde -->
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                          <th colspan="4" scope="col" class="text-center">08 de novembro de 2018 (Quinta feira) – Tarde</th>
+                        </tr>
+                        <tr>
+                          <th scope="col">Horário</th>
+                          <th scope="col">Programação</th>
+                          <th scope="col">Comitê Avaliador</th>
+                          <th scope="col">Local</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td rowspan="4">14:00 h às 18:00 h</td>
+                          <td>Sessão de Apresentações Orais: Área I – Projetos Culturais</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Sessão de Apresentações Orais: Área II –Saúde</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Sessão de Apresentações Orais: Área III – Educação</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Sessão de Apresentações Orais: Área IV – Outros</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 09 de novembrode 2018 (Sexta feira) – Manhã -->
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                          <th colspan="4" scope="col" class="text-center">09 de novembrode 2018 (Sexta feira) – Manhã</th>
+                        </tr>
+                        <tr>
+                          <th scope="col">Horário</th>
+                          <th scope="col">Programação</th>
+                          <th scope="col">Responsável</th>
+                          <th scope="col">Local</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td rowspan="4">8:00 h às 12:00 h</td>
+                          <td>Mostra de Comunidades: Agricultura Familiar - Exposição de - Produtos/Serviços da Comunidade</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Exposição de Arte</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>Teatro – Cenas curtas</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>CineGen</td>
+                          <td>A definir</td>
+                          <td>A definir</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 09 de novembrode 2018 (Sexta feira) – Tarde -->
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                          <th colspan="4" scope="col" class="text-center">09 de novembrode 2018 (Sexta feira) – Tarde</th>
+                        </tr>
+                        <tr>
+                          <th scope="col">Horário</th>
+                          <th scope="col">Programação</th>
+                          <th scope="col">Responsável</th>
+                          <th scope="col">Local</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td>14:00 h às 16:00 h</td>
+                          <td>Reunião do comitê científico para escolha dos melhores trabalhos</td>
+                          <td></td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>16:00 h às 18:00 h</td>
+                          <td>Cerimônia de encerramento e Premiação dos melhores trabalhos.</td>
+                          <td>Comissão Organizadora</td>
+                          <td>A definir</td>
+                        </tr>
+                        <tr>
+                          <td>18:00 h</td>
+                          <td>Apresentação Cultural: Grupo Musical/Arte</td>
+                          <td></td>
+                          <td>A definir</td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="gray-bg section-padding" id="register-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+
+                  <h4 class="text-center">PROGRAMAÇÃO DO EVENTO – Campus Senador Helvídio Nunes de Barros</h4><br/>
+
+                  <!-- 06, 07 e 08 de novembro de 2018 -->
+                  <table class="table table-bordered table-responsive">
+                      <thead>
+                          <tr>
+                            <th colspan="3" scope="col" class="text-center">06, 07 e 08 de novembro de 2018</th>
+                          </tr>
+                          <tr>
+                            <th scope="col">06/11 (Terça-feira)</th>
+                            <th scope="col">07/11 (Quarta-feira)</th>
+                            <th scope="col">08/11 (Quinta-feira)</th>
+
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td></td>
+                            <td>
+                              <strong>9:00 h
+                                <br/><br/>Mesas 01: Indissociabilidade ensino, pesquisa e extensão</strong> <br/>(Prof. Dr. João Marcelo de Castro e Sousa, <br/>Profª Ma. Patrícia Medyna Lauritzen de Lucena Drumond, <br/>Profª Drª Ana Roberta Vilarouca da Silva)
+                              <br/><br/><strong>10:30h
+                                <br/><br/>Espaço de diálogo: “A curricularização da Extensão nas IES: apresentação e discussão da Minuta de Extensão da UFPI”</strong> <br/>Prof. Dr. Raimundo Nonato Lima dos Santos (Assessor de Ações de Extensão e Cultura da UFPI/CSHNB)<br/><br/>Local: Auditório Severo Eulálio
+                            </td>
+                            <td><strong>08:00 h às 12:00 h
+                              <br/><br/> Minicursos / Oficinas
+                              <br/>1. Revisão do ENEM (2º dia)</strong> (Bolsistas do Cursinho Paulo Freire)<br/>Local: Auditório Fontes Ibiapina
+                              <br/><strong>2. Aproveitamento de produtos e subprodutos da Apicultura: pólen, própolis e hidromel </strong> (ProfªDrª Juliana do Nascimento Bendini) <br/>Local: Sala 824
+                              <br/><strong>3. Desinibição e interpretação teatral</strong> (Prof. Dr. Raimundo Nonato Lima dos Santos) <br/>Local: Sala 798 – LEHIST
+                              <br/><strong>4. A Revista Klaxon como projeto educativo para o Modernismo brasileiro</strong> (Profª Drª Cristiane Feitosa Pinheiro) <br/>Local: Sala 835
+                              <br/><strong>5. Planejamento e execução de intervenções extensionistas</strong> (Prof. Dr. João Marcelo de Castro e Sousa) <br/>Local: Sala 819
+                              <br/><strong>6. Aprendizagem e aperfeiçoamento de oratória para atuação na extensão</strong> (Prof. Dr. João Marcelo de Castro e Sousa) <br/>Local: Sala 805
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <strong>16:00 h às 18:00 h
+                              <br/><br/>Credenciamento </strong>
+                              <br/><br/>Local: Pátio Central CSHNB
+                            </td>
+                            <td>
+                              <strong>14:00 h às 17:00 h
+                              <br/><br/> Apresentação de Pôsteres</strong>
+                              <br/><br/>Local: Pátio Central CSHNB
+                            </td>
+                            <td>
+                              <strong>14:00 h às 18:00 h
+                              <br/><br/>Mostra das Comunidades</strong>
+                              <br/>1. “Feira livre no campus” (Tamaris Gimenez Pinheiro)
+                              <br/>2. Ligas Acadêmicas (João Marcelo de Castro e Sousa)
+                              <br/>3. Fios de Alegria (João Marcelo de Castro e Sousa)
+                              <br/>4. Academia de Letras da Região de Picos – ALERP
+                              <br/>5. PET “Cidade, Saúde e Justiça” – Profª Drª Ana Roberta Vilarouca da Silva
+                              <br/>6. “Apicultura” – exposição sobre a história da Apicultura na região de Picos (Profª Drª Juliana do Nascimento Bendini)
+
+                              <br/>Local: Pátio Central CSHNB
+
+                              <br/><br/><strong>14:00 h às 16:40 h <br/>Comunicações Orais </strong>
+                              <br/>Locais: <br/>Auditório Fontes Ibiapina (Área de Saúde); <br/>Auditório Severo Eulálio (Área de Educação e Cultura)
+
+                              <br/><br/><strong>17:00 h <br/>Reunião do comitê científico</strong> para escolha dos melhores trabalhos
+                              <br/>Local: Sala de reunião do campus
+
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <strong>18:20 h
+                              <br/><br/>Solenidade de abertura
+                              <br/>Atividade cultural </strong><br/>Coral do IFPI
+                              <br/><br/><strong>Pronunciamento do Magnífico Reitor
+                              <br/><br/>Conferência: “Extensão Universitária: desafios e possibilidades”</strong> <br/>Prof. Dr. Kleber Aparecido da Silva – UnB
+                              <br/><br/>Local: Auditório Fontes Ibiapina
+                            </td>
+                            <td>
+                              <strong>18:30 h
+                              <br/><br/>Atividade cultural </strong>
+                              <br/>Grupo Sinfonia
+                              <br/><br/><strong>Conferência:</strong> “Internet of Things Trends” <br/>Prof. Dr. Joel José Puga Coelho Rodrigues
+                              <br/><br/>(Obs.: atividade reunindo Pesquisa e Extensão)
+                              <br/><br/>Local: Auditório Fontes Ibiapina</td>
+                            <td><strong>
+                              18:30 h
+                              <br/><br/>Mostra das Comunidades Cultural </strong>
+                              <br/>Grupo Teatral PBC
+                              <br/>Grupo teatral TEMPUS
+                              <br/><br/><strong>Solenidade de encerramento
+                              <br/>Entrega de prêmios aos melhores trabalhos </strong>
+                              <br/><br/>Local: Auditório Severo Eulálio</td>
+                          </tr>
+                      </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-area section-padding gray-bg overlay" id="program-page">
+        <div class="container">
+          <div class="row">
+              <div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+                  <div class="page-title">
+                    <h2>CRONOGRAMA</h2>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+
+                <!-- 06 de novembro de 2018 (Terça-feira) -->
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                          <th scope="col">DATA</th>
+                          <th scope="col">ATIVIDADES</th>
+                          <th scope="col">RESPONSÁVEL/LOCAL</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td>01/10/18 a 05/11/18</td>
+                          <td>Inscrições no Evento</td>
+                          <td>Site do VIII Semex</td>
+                        </tr>
+                        <tr>
+                          <td>09/10/18 a 21/10/18</td>
+                          <td>Submissão dos Trabalhos</td>
+                          <td>Site do VIII Semex</td>
+                        </tr>
+                        <tr>
+                          <td>29/10/18</td>
+                          <td>Resultado da Seleção de Trabalhos</td>
+                          <td>Comitê científico/Site do VIII Semex</td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+    </section>
+
+{% endblock %}

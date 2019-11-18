@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load pagination %}
+{% block body %}
+
+<section class="content-header">
+	<div class="row">
+		<h3 class="col-md-8 col-md-offset-2">Área de Interesse Cadastradas</h3>
+	</div>
+	<div class="row">
+		<div class="col-md-7 col-xs-9 col-sm-9 col-md-offset-2">
+			<form class="form-horizontal" action="." method="get">
+				<div class="input-group">
+					<input id="search_box" name="search_box" type="text" placeholder="Informe o nome da área de interesse" class="form-control" autofocus="true" value="{{ request.GET.search_box }}">
+					<span class="input-group-btn">
+						<button type="submit" class="btn btn-default form-control" title="Clique para realizar a pesquisar">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						</button>
+					</span>
+				</div>
+			</form>
+		</div>
+
+		<div class="col-md-1 col-xs-3 col-sm-3">
+			<a class="btn btn-success pull-right " href="{% url 'evaluation_committee:add_interest_area' %}">
+				<i class="fa fa-plus" aria-hidden="true"></i>
+				Novo
+			</a>
+		</div>
+	</div>
+</section>
+<div id="listItems" class="content">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="box box-primary">
+				<div class="box-body">
+					{% if object_list.count > 0 %}
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed table-bordered table-striped">
+							<thead>
+								<tr class="text-center">
+									<th class="text-center" width="30%">Área de Interesse</th>
+									<th class="text-center" width="20%">Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for area in object_list %}
+								<tr>
+									<td>{{ area.name }}</td>
+
+									<td class="text-center">
+
+										<a class="btn btn-warning btn-xs" title="Editar" href="{% url 'evaluation_committee:edit_interest_area' area.id %}">
+											<i class="fa fa-edit" aria-hidden="true"></i>
+										</a>
+										{% if not request.user.is_evaluation_committee %}
+										<a href="#" class="btn btn-danger btn-xs deleteItem" title="Remover" data-toggle="modal" data-id="{{ area.id }}" >
+											<i class="fa fa-trash" aria-hidden="true"></i>
+										</a>
+										{% endif %}
+									</td>
+
+								</tr>
+
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					{% else %}
+					<div class="cent">
+						<h4>
+							<b>Nenhuma Área de Interesse cadastrada.</b>
+						</h4>
+					</div>
+					{% endif %}
+				</div>
+				<div class="box-footer clearfix">
+					<!-- Paginação -->
+						{% pagination request paginator page_obj page_numbers show_first show_last %}
+					<!-- Fim da Paginação -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+{{ block.super }}
+{{ form.media }}
+
+<script>
+
+	$('#listItems').on('click', '.deleteItem', function(e){
+		var id = $( this ).attr("data-id"),
+		urlDel = "/evaluation-committee/interest-area/delete/" + id,
+		linha_editada = $(e.currentTarget).closest('tr');
+		token = "{{csrf_token}}";
+
+		swal({
+			title: "Deletar Permanentemente!",
+			text: "Deseja realmente deletar esse bloco?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "SIM!",
+			cancelButtonText: "CANCELAR!",
+			closeOnConfirm: false
+		}, function(){
+					 //window.location.href = "http://localhost/ce/public/admin/gerenciarbanco/delete/"+id;
+
+					 $.ajax({
+					 	url: urlDel,
+					 	type: 'get',
+		    		//data: { csrfmiddlewaretoken: token },
+
+		    	})
+					 .done(function(d){
+					 	if ( d.code == 1 )
+					 	{
+					 		swal('Excluida!','Área de Interesse excluída com sucesso!',"success");
+
+					 		linha_editada.hide();
+
+
+					 	}
+
+					 })
+					 .fail(function(f){
+					 	swal('Falha!','Erro ao excluir a área de interesse!',"error");
+					 });
+
+					});
+
+	});
+</script>
+
+{% endblock %}

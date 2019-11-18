@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block body %}
+
+<div class="content">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h3>Adicionar Critério de Avaliação</h3>
+			<div class="box box-primary">
+				<form action="." class="form-group" method="post">{% csrf_token %}
+					<div class="box-body">
+						{% for field in form %} 
+						{% if field.errors %}
+						<div class="form-group error" >
+							<label class="control-label" >{{ field.label }}</label>
+							{{ field|add_class:"form-control input-md" }}
+							{% for error in field.errors%}
+							<span class="help-inline error">{{ error}}</span>
+							{% endfor%}
+						</div>
+						{%else%}
+						<div class="form-group">
+							<label class="control-label" >{{ field.label }}</label>
+							{{ field|add_class:"form-control input-md" }}
+						</div>
+						{%endif%}
+						{% endfor %}
+						<div class="box-footer">
+							<button type="submit" class="btn btn-success" style="font-weight: bold;"><i class="fa fa-check" aria-hidden="true"></i> Salvar </button>
+							<a class="btn btn-danger pull-right" href="{% url 'evaluation_committee:list_rating_criteria' %}" style="font-weight: bold;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+{{ form.media }}
+{% endblock %}

@@ -1,0 +1,69 @@
+<div class="row">
+	{% if request.user.is_organizer %}
+		<div class="col-md-3">
+			<h4><strong>Total: {{ page_obj.paginator.count }}</strong></h4>
+		</div>
+	<div class="col-md-9">
+	{% else %}
+	<div class="col-md-12">
+	{% endif %}
+		<!-- Paginação -->
+		{% if page_obj.has_other_pages %}
+		<nav>
+			<ul class="pagination pagination-md no-margin pull-right">
+				{# Previous page link #}
+				{% if page_obj.has_previous %}
+				<li>
+					<a href="?page={{ page_obj.previous_page_number }}{{ getvars }}">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				{% else %}
+				<li class="disabled">
+					<a href="#">&laquo;</a>
+				</li>
+				{% endif %}
+
+				{# First page #}
+				{% if show_first %}
+				<li>
+					<a href="?page=1">Primeiro</a>
+				</li>
+				{% endif %}
+
+				{# List of pages (with current "active") #}
+				{% for page in page_numbers %}
+				{% ifequal page page_obj.number %}
+				<li class="active">
+					<a href="#">{{ page }}</a>
+				</li>
+				{% else %}
+				<li>
+					<a href="?page={{ page }}{{ getvars }}">{{ page }}</a>
+				</li>
+				{% endifequal %}
+				{% endfor %}
+
+				{# Last page #}
+				{% if show_last %}
+				<li>
+					<a href="?page=last">{{ page_obj.pages }}Último</a>
+				</li>
+				{% endif %}
+
+				{# Next page link #}
+				{% if page_obj.has_next %}
+				<li>
+					<a href="?page={{ page_obj.next_page_number }}{{ getvars }}">&raquo;</a>
+				</li>
+				{% else %}
+				<li class="disabled">
+					<a href="#">&raquo;</a>
+				</li>
+				{% endif %}
+			</ul>
+		</nav>
+		{% endif %}
+		<!-- Fim da Paginação -->
+	</div>
+</div>

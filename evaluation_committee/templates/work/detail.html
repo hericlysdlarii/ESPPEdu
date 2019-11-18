@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block body %} 
+
+<section class="content-header">
+  <div class="row">
+    <h3 class="col-md-8 col-md-offset-1">{{object.title}}</h3>
+  </div>
+</section>
+
+<div id="listItems" class="content">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="box box-primary">
+        <div class="box-body">
+          <table class="table table-striped">
+            <tr>
+              <th>
+                #
+              </th>
+              <th>
+                Autores
+              </th>
+              <th>É o coordenador?</th>
+            </tr>
+            {% for author in authors %}
+            <tr>
+              <td>
+                {{ forloop.counter }}
+              </td>
+              <td>
+                {{ author.user.name }}
+              </td>
+              <td>
+                {% if author.is_coordinator %}
+                Sim
+                {% else %}
+                Não
+                {% endif %}
+              </td>
+            {% endfor %}
+          </table>
+          <h3>Arquivos</h3>
+          {% if object.file_word %}
+          <a href="{{ object.file_word.url }}" class="btn btn-primary">
+            <strong>Word</strong>
+          </a>
+          {% endif %}
+          {% if object.file_pdf %}
+          <a href="{{ object.file_pdf.url }}" class="btn btn-danger">
+            <strong>PDF</strong>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %} 
+

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block body %}
+<div class="container">
+  {% comment %} <div class="alert alert-warning" role="alert" style="text-align: center;margin-left: -30px;">
+      <strong>Atenção:</strong> Os resultados finaclass ParticipantsCreate(CreateView):
+#   model = User
+#   template_name = 'website/inscricao.html'
+#   form_class = UserCreationForm
+
+#   def form_valid(self, form):
+#       try:
+#           with transaction.atomic():
+#               participant = form.save()
+
+#               messages.success(self.request, 'Participante cadastrado com sucesso.')
+
+#       except IntegrityError: #If the transaction failed
+#           messages.error(
+#               self.request, 'Ocorreu um erro ao salvar o participante.')
+
+#       return HttpResponseRedirect(self.get_success_url())
+
+#   def form_invalid(self, form):
+#       return self.render_to_response(
+#           self.get_context_data(
+#                   form=form,
+#               )
+#           )
+#   def get_success_url(self):
+#       return reverse('accounts:login')
+is dos trabalhos aceitos estarão disponíveis no dia 08/11/2019.
+  </div> {% endcomment %}
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div style="margin-top: 6em; margin-bottom: 6em;">
+        <center>
+          {% comment %} <img src="{% static 'img/SIUFPI-min-2.png' %}" class='img-responsive'> {% endcomment %}
+          <h1>Bem-Vindo</h1>
+        </center>
+      </div>
+    </div>
+  </div>
+  {% if request.user.is_superuser %}
+    <div class="row">
+      <div class="col-lg-6 col-6">
+        <!-- small box -->
+        <div class="small-box bg-primary">
+          <div class="inner">
+            <h3>{{ inscriptions }}</h3>
+            <p>Inscrições</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-6">
+        <!-- small box -->
+        <div class="small-box bg-primary">
+          <div class="inner">
+            <h3>{{ admins }}</h3>
+            <p>Administradores</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% comment %} <div class="row">
+      <div class="container">
+        <h3>Trabalhos distribuídos para avaliação por campus</h3>
+      </div>
+    </div>
+    <div class="row">
+      {% for d in data %}
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-primary">
+          <div class="inner">
+            <h3>{{ d.works }}</h3>
+            <p>{{ d.campus.name }}</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div> {% endcomment %}
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+{% load i18n %}
+{% block body %}
+
+<style>
+	.delete-row{
+		background-color: #dd4b39;
+		border-color: #d73925;
+		color: white;
+		border-radius: 3px;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		border: 1px solid transparent;
+		display: inline-block;
+		padding: 6px 12px;
+		margin-bottom: 0;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1.42857143;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		-ms-touch-action: manipulation;
+		touch-action: manipulation;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		background-image: none;
+		border: 1px solid transparent;
+		border-radius: 4px;
+	}
+	.delete-row:hover{
+		color: white;
+		background-color: #b63d2d;
+	}
+</style>
+
+
+<div class="content">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h3>Adicionar Trabalho</h3>
+			{% comment %} {% if event or request.resolver_match.url_name == 'edit_work' %} {% endcomment %}
+			<div class="box box-primary">
+				<div class="box-body">
+					<form action="." class="form-group" method="post" enctype="multipart/form-data">{% csrf_token %}
+						<div class="table-responsive ">
+								<table class="table table-striped" id="userwork_table">
+										<thead>
+												<tr>
+														<th>Nome do Autor</th>
+														<th>Email</th>
+														<th>É o Coordenador?</th>
+														<th>Ação</th>
+												</tr>
+										</thead>
+										<tbody>
+									{% for userwork in userwork_formset %}
+									{% if forloop.first %}
+									<tr class="{% if not userwork.pk %}dynamic-form{% endif %}"  id="{{ userwork.prefix }}-row">
+											{{ userwork.id }}
+											<td>{{userwork.name.value}}{{ userwork.name.as_hidden }}</td>
+											<td>{{userwork.email.value}}{{ userwork.email.as_hidden }}</td>
+											<td>{{userwork.is_coordinator}}</td>
+											<td></td>
+									</tr>
+									{% else %}                            
+									<tr class="tr {% if not userwork.pk %}dynamic-form{% endif %}"  id="{{ userwork.prefix }}-row">
+										{{ userwork.id }}
+										<td>{{userwork.name}}</td>
+										<td>{{userwork.email}}</td>
+										<td>{{userwork.is_coordinator}}</td>
+										<td>{{userwork.DELETE}}</td>
+									</tr>
+									{% endif %}
+									{% endfor %}
+								</tbody>
+							</table>
+							{{ userwork_formset.management_form }}
+						</div>
+						{% for field in form %} 
+						{% if field.errors %}
+						<div class="form-group error" >
+							<label class="control-label" >{{ field.label }}</label>
+							{{ field|add_class:"form-control input-md" }}
+							{% for error in field.errors%}
+							<span class="help-inline error">{{ error}}</span>
+							{% endfor%}
+						</div>
+						{%else%}
+						<div class="form-group">
+							<label class="control-label" >{{ field.label }}</label>
+							{{ field|add_class:"form-control input-md" }}
+						</div>
+						{%endif%}
+						{% endfor %}
+						<div class="box-footer">
+							<button type="submit" class="btn btn-success" style="font-weight: bold;"><i class="fa fa-check" aria-hidden="true"></i> Salvar </button>
+							<a class="btn btn-danger pull-right" href="{% url 'evaluation_committee:list_work' %}" style="font-weight: bold;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+						</div>
+					</div>
+				</form>
+			</div>
+			{% comment %} {% else %}
+			<div class="box box-primary">
+				<div class="box-body">
+				Não é possível cadastrar atividade. Período de submissões finalizados.
+				</div>	
+			</div>
+			{% endif %} {% endcomment %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+{{ form.media }}
+<script src="{% static 'jquery.formset.js' %}"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#userwork_table tbody .tr').formset({
+			prefix: '{{ userwork_formset.prefix }}',
+			addText: 'Adicionar',
+			addCssClass: 'btn btn-success adicionar',
+			deleteText: 'Remover',
+			deleteCssClass: 'delete-row',
+			formCssClass: 'dynamic-form', 
+		});
+	});
+</script>
+<script type="text/javascript">
+	$(function(){
+		$(":file").filestyle({
+			buttonName: "btn-primary",
+			buttonBefore:true,
+			buttonText: "Escolher arquivo"
+		});
+	});
+</script>
+{% endblock %}

@@ -1,0 +1,156 @@
+{% load staticfiles %}
+<!doctype html>
+<html class="no-js" lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Template: John Doe, Colorlib. Modificações respeitando a licença MIT: Lucas Coelho">
+    <meta name="description" content="VIII edição do Seminário de Extensão e Cultura da Universidade Federal do Piauí (UFPI) e V Mostra de Comunidades. ">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript, Django">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title>{% block title %} ESPPEdu {% endblock %}</title>
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+    <link rel="shortcut icon" type="image/ico" href="{% static 'img\favicon.png' %}" />
+    <!-- Plugin-CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap_colid.min.css' %}">
+ <!-- bootstrap-datepicker -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <!-- Main-Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'style_public.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <script src="{% static 'js/vendor/modernizr-2.8.3.min.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    {% block script %}{% endblock  %}
+
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body data-spy="scroll" data-target="#primary-menu">
+    <!--Mainmenu-area-->
+    <div class="mainmenu-area" data-spy="affix" data-offset-top="100">
+        <div class="container">
+            <!--Logo-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary-menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="{% url 'website:home' %}" class="navbar-brand logo">
+                    <img src="{% static 'img\logo.png' %}" alt="">
+                </a>
+            </div>
+            <!--Logo/-->
+            <nav class="collapse navbar-collapse" id="primary-menu">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- <li><a href="{% url 'website:schedule' %}">Programações</a></li> -->
+                    {% comment "" %}
+                    <li><a href="{% url 'website:submission_result' %}">Resultados</a></li>
+                    <li><a href="{% url 'website:standards' %}">Normas</a></li>
+                    {% endcomment %}
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#contact-page">Contato</a></li>
+                    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!--Mainmenu-area/-->
+
+    {% block header %}
+        <!-- UTILIZAR UM TRECHO DE CÓDIGO DEFAULT DO DJANGO PARA MODIFICAR AO NAVEGAR POR LINKS -->
+        <!-- Colocar um id para o detalhe do menu que representa a aba aberta -->
+        <!--Header-area-->
+        <header class="header-area overlay full-height relative v-center">
+            <div class="absolute anlge-bg"></div>
+            <div class="container">
+                <div class="row v-center">
+                    <div class="col-xs-12 col-md-12 text-center">
+                        <img src="#" alt="">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--Header-area/-->
+    {% endblock %}
+
+    {% block body %}
+
+    {% endblock %}
+
+    <footer class="footer-area relative sky-bg" id="contact-page">
+        <div class="absolute footer-bg"></div>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+                        <div class="page-title">
+                            <h2>CONTATO</h2>
+                            <p>(99) 9999-9999</p>
+                            <p>exemple@ufpi.edu.br</p>
+                        </div>
+                        <img src="{% static 'img\ufpi.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <a id="back-to-top" href="#" class="button">
+                          <i class="ti-angle-up"></i>  Voltar ao Topo
+                        </a>
+                        <p class="text-white">
+                          &copy; Copyright 2018 - {% now 'Y' %}. Direitos Reservados.  Template
+                          <a href="https://colorlib.com" target="_blank">
+                            Colorlib
+                          </a>
+                          
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    {% block scripts %}
+
+        <!--Vendor-JS-->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/moment.js' %}"></script>
+        <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'js/jquery.mask.min.js' %}"></script>
+        <script src="{% static 'js/back_to_top.js' %}"></script>
+        <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+        <!--Plugin-JS-->
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/contact-form.js' %}"></script>
+        <script src="{% static 'js/jquery.parallax-1.1.3.js' %}"></script>
+        <script src="{% static 'js/scrollUp.min.js' %}"></script>
+        <script src="{% static 'js/magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/wow.min.js' %}"></script>
+        <!--Main-active-JS-->
+        <script src="{% static 'js/main.js' %}"></script>
+        <!-- bootstrap-datepicker -->
+
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+      .borda td{
+        padding: 10px;
+      }
+      .borda2{
+        padding: 10px;
+      }
+      .borda3{
+        padding: 10px;
+      }
+      .img-space img{
+        padding-right: 15px;
+      }
+      .btn{
+      text-decoration: none;
+      width: 250px;
+      background-color: #aaa;
+      color: #fff;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      font-size: 30px;
+      line-height: 2;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      }
+    </style>
+</head>
+<body>
+  <div width="100%" align="center" style="background:#eee; padding:15px;" >
+    <table border="0" bgcolor="#FFFFFF" width="70%">
+      <tr bgcolor="#aaa" height="90px" width="90px" align="center" valign="center">
+        <!--<td colspan="2"><img src="https://s32.postimg.org/u5hyj1d79/logo_120_x_120.png" alt=""></td> -->
+        <td colspan="2"><img src="https://semex.ufpi.br/static/img/logo_120_x_120.png" alt=""></td>
+      </tr>
+      <tr bgcolor="#FFFFFF" align="left" valign="center" class="borda">
+        <td colspan="2">
+          <strong><p style="font-size: 25px;text-align: center;">Um novo trabalho disponível para avaliação!</p></strong>
+          <p>Olá, {{ corrector.name }}. </p><br>
+          <p style="font-size: 15px;">Você acabou de receber um trabalho para avaliação na plataforma SEMEX.<br> 
+            Por favor, se redirecione para a plataforma e efetue a avaliação do trabalho submetido.</p>
+          </p>
+          <br>
+          <p><strong>DADOS DO TRABALHO</strong></p>
+          <p><strong>TÍTULO: </strong>{{ work.title }}</p>
+          <p><strong>AUTOR: </strong>{{ work.author.name }}</p>
+          <p><strong>ÁREAS DE INTERESSE: </strong>
+            {% for area in work.interest_area.all %}
+              {{ area.name }} 
+              {% if not forloop.last %}
+              , 
+              {% endif %}
+            {% endfor %}
+          </p>
+          <br>
+          <p>{% trans "Thanks for using our site!" %}</p>
+
+          <p>Este é um e-mail automático enviado pela {% blocktrans %}The STI/CSHNB - UFPI team{% endblocktrans %}, favor não responder.</p>
+        </td>
+      </tr>
+
+      <tr bgcolor="#aaa" height="100px" align="right" valign="center">
+        <td colspan="2" class="img-space">
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

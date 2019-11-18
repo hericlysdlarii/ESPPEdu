@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block body %}
+
+<div class="content">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h3>Perfil</h3>
+			<div class="box box-primary">
+				<form action="." class="form-group" method="post">{% csrf_token %}
+					<div class="box-body">
+						{% for field in form %}
+						{% if field.errors %}
+						<div class="form-group error" >
+							<label class="control-label" >{{ field.label }}</label>
+							{{ field|add_class:"form-control input-md" }}
+							{% for error in field.errors%}
+							<span class="help-inline error">{{ error}}</span>
+							{% endfor%}
+						</div>
+						{%else%}
+							{% if field.name in 'is_whatsapp\commitment' or field.name in 'is_ufpi\commitment'%}
+								<div class="checkbox col-md-12">
+										<label>
+												<input type="checkbox" name="{{ field.name }}" id="id_{{ field.name }}" {% if field.value %} checked {% endif %}> {{ field.label }}
+										</label>
+										<br/>
+								</div>
+							{%else%}
+								<div class="form-group margin-bottom-15">
+									<label class="control-label" >{{ field.label }}</label>
+									{{ field|add_class:"form-control input-md" }}
+								</div>
+							{%endif%}
+						{%endif%}
+						{% endfor %}
+						<div class="box-footer">
+							<button type="submit" class="btn btn-success" style="font-weight: bold;"><i class="fa fa-check" aria-hidden="true"></i> Atualizar </button>
+                            <a class="btn btn-danger pull-right" href="{% url 'core:index' %}" style="font-weight: bold;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+{{ form.media }}
+<script>
+document.getElementById('id_category').addEventListener('change', habilitarCategory, true);
+window.onload = habilitarCategory;
+function habilitarCategory(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var occupation = document.getElementById('id_occupation');
+    var categoria = document.getElementById('id_category');
+
+    if (e.currentTarget.value === '' || categoria.selectedIndex === 0) {
+        occupation.disabled = true;
+    }
+    if (e.currentTarget.value === 'OTHES' || categoria.selectedIndex === 1) {
+        occupation.disabled = false;
+    }
+    if (e.currentTarget.value === 'STUDENT' || categoria.selectedIndex === 2) {
+        occupation.disabled = true;
+    }
+    if (e.currentTarget.value === 'TEACHER' || categoria.selectedIndex === 3) {
+        occupation.disabled = true;
+    }
+}
+</script>
+<script>
+document.getElementById('id_is_ufpi').addEventListener('change', VerificarCheckbox, true);
+
+window.onload = VerificarCheckbox;
+
+
+var institution = document.getElementById('id_institution');
+
+function VerificarCheckbox(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.currentTarget.checked == true){
+        console.log("sim");
+
+        institution.disabled = true;
+    } else {
+        console.log("nao");
+
+        institution.disabled = false;
+    }
+}
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#id_birth_date").datepicker({
+        format: "dd/mm/yyyy",
+        todayBtn: "linked",
+        language: "pt-BR",
+        autoclose: true,
+        todayHighlight: true
+    });
+    $('#id_phone').mask('(00) 0 0000-0000');
+    $('#id_cpf').mask('000.000.000-00');
+    $('#id_birth_date').mask('00/00/0000');
+});
+</script>
+{% endblock %}
