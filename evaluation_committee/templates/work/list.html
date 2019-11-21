@@ -66,6 +66,7 @@
 											{% endif %}
 										{% endif %}
 
+										{% comment %}
 										{% if request.user.is_organizer %}
 											<a class="btn btn-warning btn-xs" title="Editar" href="{% url 'evaluation_committee:edit_work' work.id %}">
 												<i class="fa fa-edit" aria-hidden="true"></i>
@@ -74,6 +75,7 @@
 												<i class="fa fa-trash" aria-hidden="true"></i>
 											</a>
 										{% endif %}
+										{% endcomment %}
 
 										<a class="btn btn-primary btn-xs" title="Visualizar" href="{% url 'evaluation_committee:get_work' work.id %}">
 											<i class="fa fa-eye" aria-hidden="true"></i>

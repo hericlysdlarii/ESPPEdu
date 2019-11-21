@@ -8,7 +8,7 @@
 		<h3 class="col-md-8 col-md-offset-2">Avaliações</h3>
 	</div>
 	<div class="row">
-		{% if not request.user.is_evaluation_committee and not request.user.is_participant %}
+	{% if not request.user.is_evaluation_committee %} <!--and not request.user.is_participant-->
 		<div class="col-md-7 col-xs-9 col-sm-9 col-md-offset-2">
 			<form class="form-horizontal" action="." method="get">
 				<div class="input-group">

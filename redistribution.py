@@ -12,8 +12,8 @@ evaluation_committee = EvaluationCommittee.objects.get()
 users_committee = UserCommittee.objects.filter(committee=evaluation_committee, interest_area=work.interest_area).exclude(user=request.user)
 
 data = {
-    'corrector': users_committee[0].user,
-    'evaluations': Evaluation.objects.filter(corrector=users_committee[0].user).count()
+    'corrector': users_committee.user,
+    'evaluations': Evaluation.objects.filter(corrector=users_committee.user).count()
 }
 
 for corrector in users_committee:

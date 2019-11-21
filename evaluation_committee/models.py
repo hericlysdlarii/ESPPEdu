@@ -34,7 +34,8 @@ class Work(AuditModel):
     file_word = models.FileField('Arquivo Word', blank=True, null=True, upload_to='uploads/%Y/%m/%d/')
     file_pdf = models.FileField('Arquivo PDF', blank=True, null=True, upload_to='uploads/%Y/%m/%d/')
     submission_user = models.ForeignKey(User, verbose_name='Usuário que submeteu', blank=True, null=True, on_delete=models.DO_NOTHING)
-
+    
+    
     @property
     def author(self):
         author = UserWork.objects.get(work=self, order=1)
@@ -167,7 +168,7 @@ class UserCommittee(AuditModel):
     #     return "Comitê científico do campus {}".format(self.committee.campus.name)
 
     def get_absolute_url(self):
-        # return reverse('evaluation_committee:list_evaluation_committee')
+        return reverse('evaluation_committee:list_evaluation_committee')
         pass
 
     class Meta:
