@@ -488,8 +488,7 @@ class CreateWork(CreateView):
                         name=user_form.cleaned_data.get('name')
                     )
                     user.set_password('teste')
-                    user.save()
-                
+                    user.save()        
                 from django.utils import timezone
                 user_work = UserWork(user=user,work=self.object,order=i+1, is_coordinator=user_form.cleaned_data['is_coordinator'], created_on=timezone.now(), updated_on=timezone.now())
                 user_work.save()
@@ -774,16 +773,16 @@ class ListEvaluation(ListView):
             works_id = [x.id for x in works]
             self.queryset = Evaluation.objects.filter(work__id__in=works_id)
         elif not self.request.user.is_evaluation_committee:
-            self.queryset = super(ListEvaluation, self).get_queryset()    
+            self.queryset = super(ListEvaluation, self).get_queryset()   
         else:
-            self.queryset = Evaluation.objects.filter(corrector=self.request.user) 
+            self.queryset = Evaluation.objects.filter(corrector=self.request.user)
 
         if self.request.GET.get('search_box', False):
 
             self.queryset=self.queryset.filter(Q(work__title__icontains = self.request.GET['search_box'])| Q(corrector__username__icontains=self.request.GET['search_box']))
 
             self.queryset=self.queryset.filter(Q(work__title__icontains = self.request.GET['search_box']) | Q(corrector__name__icontains=self.request.GET['search_box']) | Q(corrector__username__icontains=self.request.GET['search_box']) |Q(work__interest_area__name__icontains = self.request.GET['search_box']))
-
+        
         return self.queryset
 
     def get_context_data(self, **kwargs):
