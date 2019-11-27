@@ -31,6 +31,13 @@
 
     {% block script %}{% endblock  %}
 
+    <style type="text/css">
+        .mycontainer{
+            display: flex;
+            margin:5px;
+        }
+        </style>
+
     <!--[if lt IE 9]>
         <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -48,19 +55,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="{% url 'website:home' %}" class="navbar-brand logo">
-                    <img src="{% static 'img\logo.png' %}" alt="">
-                </a>
+                <a href="{% url 'website:home' %}" class="navbar-brand logo">ESPPEdu</a>
             </div>
             <!--Logo/-->
             <nav class="collapse navbar-collapse" id="primary-menu">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'website:submission_result' %}">Artigos</a></li>
-                    <!-- <li><a href="{% url 'website:schedule' %}">Programações</a></li> -->
-                    {% comment "" %}
-                    <li><a href="{% url 'website:standards' %}">Normas</a></li>
-                    {% endcomment %}
-                    <li><a href="#">Sobre</a></li>
+                    <li><a href="{% url 'website:ajuda' %}">Ajuda</a></li>
                     <li><a href="#contact-page">Contato</a></li>
                     <li><a href="{% url 'accounts:login' %}">Login</a></li>
                 </ul>
@@ -78,7 +79,7 @@
             <div class="container">
                 <div class="row v-center">
                     <div class="col-xs-12 col-md-12 text-center">
-                        <img src="#" alt="">
+                        <img src="{% static 'img\esppedulogo.png' %}" alt="">
                     </div>
                 </div>
             </div>

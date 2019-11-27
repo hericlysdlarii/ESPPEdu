@@ -11,23 +11,20 @@
             <div class="row">
                 <div class="col-md-8 blog-main">
 
-                    <h2><strong>Principais Publicações</strong></h2>
-                    {% for object in posts %}
-                        <tr>
-                            <td>{{ object.work.title}}</td>
-                            <td>{{ object.average|floatformat:2}}</td>	
-                        </tr>
-                    {% endfor %}
-                    
-                    {% if posts.count == 0 %}
-                        <div style="text-align:center" class="jumbotron">
-                            <h2>Nenhum artigo publicado!</h2>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+                                <div class="page-title">
+                                    <h2>Sobre</h2>
+                                    <p align="justify"> A produção bibliográfica é o principal fator de produção acadêmica na atualidade. O artigo tem sido alçado a um patamar elevado de grande destaque nessa produção, em função do seu peso no currículo. 
+                                    </p> <p align="justify">Setor parcialmente explorado no campo de pesquisa da comunicação, a revista se dirige a um público específico, destacando-se pelas estratégias visuais, pela segmentação temática e a periodicidade não atrelada à urgência informativa, o que permite a instauração de práticas profissionais e de relação com seu público bastante peculiares.</p>
+                                    <p align="justify">Observando este contexto, o ESPPEdu se trata de um sistema para submissão e avaliação de artigos desenvolvido por alunos da Universidade Federal do Piaui - CSHNB. </p>
+                                </div>
+                            </div>
                         </div>
-                    {% endif %}
-                            
-                    
-                </div>
+                    </div>
 
+                </div>  
             </div>
         </div>
     </section>

@@ -22,12 +22,12 @@ def home(request):
   return render(request, 'website/index.html')
 
 # Programações
-def schedule(request):
-  return render(request, 'website/schedule.html')
+def ajuda(request):
+  return render(request, 'website/ajuda.html')
 
 # Normas
-def standards(request):
-  return render(request, 'website/standards.html')
+# def standards(request):
+#   return render(request, 'website/standards.html')
 
 # resultado das submissoes
 def submission_result(request):

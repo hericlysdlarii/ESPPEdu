@@ -1,0 +1,117 @@
+{% extends 'base_public.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block title %}ESPPEdu{% endblock %}
+
+{% block body %}
+    <section class="gray-bg section-padding" id="form-page">
+        <div class="container">
+           
+           <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+                        <div class="page-title">
+                            <h2>Ajuda</h2>        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <container class="mycontainer">
+                <span> 
+            <img width="40" height="120" src="{% static 'images\add.png' %}" alt="">
+            </span>
+            
+            <span><h4><strong> Criar Conta </strong></h4> Para criar uma nova conta, o usuário deverá acessar a página de <a href="{% url 'accounts:login' %}">Login</a>, clicar em "Cadastre-se" e preencher todos os dados solicitados pelo sistema. Vale lembrar que a senha dever ter no minimo 8 caracteres e ser "forte", ou seja, possuir letras, numeros e caracteres especiais. </span>
+            </container> <br><br>
+
+            <container class="mycontainer">
+                <span> 
+            <img width="40"  height="120" src="{% static 'images\esquecisenha.png' %}" alt="">
+            </span>
+            <span><h4><strong>Recuperar Senha</strong></h4> Caso você tenha perdido sua senha de acesso, você poderá recupera-la acessando a página de <a href="{% url 'accounts:login' %}">Login</a>, clicar em "Recuperar Senha", digitar o email de cadastrado e clicar no botão "enviar". Uma mensagem de recuperação de senha chegará no seu e-mail. </span>
+            </container><br><br>
+
+            <container class="mycontainer">
+                <span> 
+                    
+            <img  width="50"  height="120" src="{% static 'images\novasenha.png' %}" alt="" >
+            </span>
+            <span><h4><strong>Alterar senha</strong></h4> Com o login feito, você verá no dashboard no canto superior direito um ícone co sua foto, ao clicar nela, aparecerá algumas opções, dentre elas a opção de "Recuperar senha", ao clicar nessa opção você será redirecionado, nessa página pedirá para você colocar a senha atual e colocar a nova senha. Após preencher os dados corretamente, bastará clicar no botão "Enviar". </span>
+            </container><br><br>
+            
+            <container class="mycontainer">
+                <span> 
+            <img width="40" height="120" src="{% static 'images\submissão.png' %}" alt="">
+            </span>
+            
+            <span><h4><strong>Submissão de Trabalhos</strong></h4> Com a conta criada, usuario deverá realizar o <a href="{% url 'accounts:login' %}">Login</a> no sistema, selecionar Nova Submissão, preencher os campos necessários e enviar para a valiação. Você poderá ver o status do artigo atividades -> Avaliações. </span>
+            </container><br><br>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+{{ form.media }}
+<script>
+document.getElementById('id_category').addEventListener('change', habilitarCategory, true);
+window.onload = habilitarCategory;
+function habilitarCategory(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var occupation = document.getElementById('id_occupation');
+    var categoria = document.getElementById('id_category');
+
+    if (e.currentTarget.value === '' || categoria.selectedIndex === 0) {
+        occupation.disabled = true;
+    }
+    if (e.currentTarget.value === 'OTHES' || categoria.selectedIndex === 1) {
+        occupation.disabled = false;
+    }
+    if (e.currentTarget.value === 'STUDENT' || categoria.selectedIndex === 2) {
+        occupation.disabled = true;
+    }
+    if (e.currentTarget.value === 'TEACHER' || categoria.selectedIndex === 3) {
+        occupation.disabled = true;
+    }
+}
+</script>
+<script>
+document.getElementById('id_is_ufpi').addEventListener('change', VerificarCheckbox, true);
+
+window.onload = VerificarCheckbox;
+
+
+var institution = document.getElementById('id_institution');
+
+function VerificarCheckbox(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.currentTarget.checked == true){
+        console.log("sim");
+
+        institution.disabled = true;
+    } else {
+        console.log("nao");
+
+        institution.disabled = false;
+    }
+}
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#id_birth_date").datepicker({
+        format: "dd/mm/yyyy",
+        todayBtn: "linked",
+        language: "pt-BR",
+        autoclose: true,
+        todayHighlight: true
+    });
+    $('#id_phone').mask('(00) 0 0000-0000');
+    $('#id_cpf').mask('000.000.000-00');
+    $('#id_birth_date').mask('00/00/0000');
+});
+</script>
+{% endblock %}
