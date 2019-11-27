@@ -56,86 +56,83 @@ from django.conf import settings
 
 
 
-
-# Função para remanejar os trabalhos para os avaliadores
-# def atualizar(request):
+def atualizar(request):
     
-#     campus = Campus.objects.get(name=request.GET['campus'])
+    #campus = Campus.objects.get(name=request.GET['campus'])
 
-#     work_list = []
+    work_list = []
 
-#     works = Work.objects.all()
+    works = Work.objects.all()
 
-#     from django.utils import timezone
-#     event = Edition.objects.filter(ativo=True).exists()
-#     if event:
+    from django.utils import timezone
+    #event = Edition.objects.filter(ativo=True).exists()
+    #if event:
 
-#         # print("========== entrou")
+        # print("========== entrou")
 
-#         event = Edition.objects.get(ativo=True)
-#         inscription = Inscription.objects.filter(edition=event, campus=campus)
-#         inscription_users = [x.user for x in inscription]
+    #event = Edition.objects.get(ativo=True)
+    #inscription = Inscription.objects.filter(edition=event, campus=campus)
+    #inscription_users = [x.user for x in inscription]
 
-#         edition = Edition.objects.get(ativo=True)
-#         inscriptions = Inscription.objects.filter(edition=edition, campus=campus)
-#         users = [x.user for x in inscriptions]
-#         workAuthor = UserWork.objects.filter(user__in=users)
-#         works_id = [w.work.id for w in workAuthor]
-#         works = Work.objects.filter(id__in=works_id)
+    #edition = Edition.objects.get(ativo=True)
+    #inscriptions = Inscription.objects.filter(edition=edition, campus=campus)
+    #users = [x.user for x in inscriptions]
+    workAuthor = UserWork.objects.all()
+    works_id = [w.work.id for w in workAuthor]
+    works = Work.objects.filter(id__in=works_id)
+    
+
+    for work in works:
+        evaluation_committee = EvaluationCommittee.objects.all()
+
+        users_work_id = [x.user.id for x in workAuthor if x.work == work]
         
+        users_committee = UserCommittee.objects.filter(committee=evaluation_committee, interest_area=work.interest_area).exclude(user__id__in=users_work_id)
 
-#         for work in works:
-#             evaluation_committee = EvaluationCommittee.objects.get(edition=event, campus=campus)
+        data = {
+            'corrector': users_committee[0].user,
+            'evaluations': Evaluation.objects.filter(corrector=users_committee[0].user).count()
+        }    
+        
+        if not Evaluation.objects.filter(work=work).exists():
+            data = {
+                'corrector': users_committee[0].user,
+                'evaluations': Evaluation.objects.filter(corrector=users_committee[0].user).count()
+            }
 
-#             users_work_id = [x.user.id for x in workAuthor if x.work == work]
+            for corrector in users_committee:
+                evaluations = Evaluation.objects.filter(
+                    corrector=corrector.user
+                ).count()
+                if evaluations < data['evaluations']:
+                    data['corrector'] = corrector.user
+                    data['evaluations'] = evaluations
+
+            evaluation = Evaluation.objects.create(work=work, corrector=data['corrector'])
+            evaluation.save()
             
-#             users_committee = UserCommittee.objects.filter(committee=evaluation_committee, interest_area=work.interest_area).exclude(user__id__in=users_work_id)
+            rating_criteria_event = RatingCriteria.objects.all()
+            items = []
+            for criteria in rating_criteria_event:
+                items.append(EvaluationRatingCriteria(criteria=criteria, value=0.0, evaluation=evaluation))
 
-#             data = {
-#                 'corrector': users_committee[0].user,
-#                 'evaluations': Evaluation.objects.filter(created_on__gte=event.start_of_registrations, corrector=users_committee[0].user).count()
-#             }    
-            
-#             if not Evaluation.objects.filter(work=work).exists():
-#                 data = {
-#                     'corrector': users_committee[0].user,
-#                     'evaluations': Evaluation.objects.filter(created_on__gte=event.start_of_registrations, corrector=users_committee[0].user).count()
-#                 }
+            EvaluationRatingCriteria.objects.bulk_create(items)
 
-#                 for corrector in users_committee:
-#                     evaluations = Evaluation.objects.filter(
-#                         created_on__gte=event.start_of_registrations, 
-#                         corrector=corrector.user
-#                     ).count()
-#                     if evaluations < data['evaluations']:
-#                         data['corrector'] = corrector.user
-#                         data['evaluations'] = evaluations
+            to = [data['corrector'].email]
 
-#                 evaluation = Evaluation.objects.create(work=work, corrector=data['corrector'])
-#                 evaluation.save()
-                
-#                 rating_criteria_event = RatingCriteria.objects.filter(edition=event)
-#                 items = []
-#                 for criteria in rating_criteria_event:
-#                     items.append(EvaluationRatingCriteria(criteria=criteria, value=0.0, evaluation=evaluation))
+            html_content = render_to_string('work/send_email.html', {'work': work, 'corrector': data['corrector']})
+            text_content = strip_tags(html_content)
 
-#                 EvaluationRatingCriteria.objects.bulk_create(items)
+            subject = "[ESPPEDU] Um novo trabalho submetido para avaliação! | ESPPEDU"
+            from_email = "ESPPEDU <"+ str(settings.EMAIL_HOST_USER)+">"
+            to = [data['corrector'].email]
 
-#                 to = [data['corrector'].email]
+            msg = EmailMultiAlternatives(subject, text_content, from_email, to)
+            msg.attach_alternative(html_content, "text/html")
 
-#                 html_content = render_to_string('work/send_email.html', {'work': work, 'corrector': data['corrector']})
-#                 text_content = strip_tags(html_content)
+            msg.send()
 
-#                 subject = "[SEMEX] Um novo trabalho submetido para avaliação! | SEMEX"
-#                 from_email = "SEMEX <"+ str(settings.EMAIL_HOST_USER)+">"
-#                 to = [data['corrector'].email]
-
-#                 msg = EmailMultiAlternatives(subject, text_content, from_email, to)
-#                 msg.attach_alternative(html_content, "text/html")
-
-#                 msg.send()
-
-#         pass
+    pass
 
 # View para Autocomplete de User
 class UserAutocomplete(autocomplete.Select2QuerySetView):
@@ -189,16 +186,16 @@ class InterestAreaAutocomplete(autocomplete.Select2QuerySetView):
         return qs
 
 
-# View para Autocomplete de InterestArea
-# class CriteriaAutocomplete(autocomplete.Select2QuerySetView):
-#     def get_queryset(self):
+#View para Autocomplete de Criterio
+class CriteriaAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
 
-#         qs = RatingCriteria.objects.all()
+        qs = RatingCriteria.objects.all()
 
-#         if self.q:
-#             qs = qs.filter(Q(name__icontains=self.q))
+        if self.q:
+            qs = qs.filter(Q(name__icontains=self.q))
 
-#         return qs
+        return qs
 
 
 # Views para Model EvaluationCommittee
@@ -397,57 +394,124 @@ class ListInterestArea(ListView):
 
 
 # Views para Model RatingCriteria
-# ition matching query does not exist.
+@method_decorator(login_required, name='dispatch')
+class CreateRatingCriteria(CreateView):
+    """
+    ClassView para Criação de objeto RatingCriteria
+    """
+    model = RatingCriteria
+    form_class = RatingCriteriaForm
+    template_name = 'rating-criteria/add.html'
+
+
+@method_decorator(login_required, name='dispatch')
+class UpdateRatingCriteria(UpdateView):
+    """
+    ClassView para edição de objeto RatingCriteria
+    """
+    model = RatingCriteria
+    form_class = RatingCriteriaForm
+    template_name = 'rating-criteria/add.html'
+
+
+@login_required
+def rating_criteria_delete(request, pk):
+    """
+    View para exclusão de objeto RatingCriteria
+    """
+    rating_criteria= get_object_or_404(RatingCriteria, pk=pk)
+    rating_criteria.delete()
+    return JsonResponse({'msg': "Critério de avaliação excluido com sucesso!", 'code': "1"})
+
+
+@method_decorator(login_required, name='dispatch')
+class ListRatingCriteria(ListView):
+    """
+    ClassView para listagem de objetos RatingCriteria
+    """
+    model = RatingCriteria
+    http_method_names = ['get']
+    template_name = 'rating-criteria/list.html'
+    context_object_name = 'rating_criteria'
+    paginate_by = 25
+
+    def get_queryset(self):
+        self.queryset = super(ListRatingCriteria, self).get_queryset()
+        if self.request.GET.get('search_box', False):
+            self.queryset=self.queryset.filter(name__icontains = self.request.GET['search_box'])
+        return self.queryset
+
+    def get_context_data(self, **kwargs):
+        _super = super(ListRatingCriteria, self)
+        context = _super.get_context_data(**kwargs)
+        adjacent_pages = 3
+        page_number = context['page_obj'].number
+        num_pages = context['paginator'].num_pages
+        startPage = max(page_number - adjacent_pages, 1)
+        if startPage <= 5:
+            startPage = 1
+        endPage = page_number + adjacent_pages + 1
+        if endPage >= num_pages - 1:
+            endPage = num_pages + 1
+        page_numbers = [n for n in range(startPage, endPage) \
+            if n > 0 and n <= num_pages]
+        context.update({
+        'page_numbers': page_numbers,
+        'show_first': 1 not in page_numbers,
+        'show_last': num_pages not in page_numbers,
+            })
+        return context
+
+
 
 # Função para enviar email para avaliador com menos trabalhos
-# def send_work(request, work):
-#     from django.utils import timezone
-#     event = Edition.objects.filter(ativo=True, end_of_registrations__gte=timezone.now()).exists()
-#     if event:
+def send_work(request, work):
+    from django.utils import timezone
+    #event = Edition.objects.filter(ativo=True, end_of_registrations__gte=timezone.now()).exists()
+    #if event:
 
-#         event = Edition.objects.get(ativo=True)
-#         inscription = Inscription.objects.get(user=request.user, edition=event)
-#         evaluation_committee = EvaluationCommittee.objects.get(edition=event, campus=inscription.campus)
-#         workAuthor = workAuthor.objects.filter(work=work)
-#         users_work_id = [x.user.id for x in workAuthor if x.work == work]
-#         users_committee = UserCommittee.objects.filter(committee=evaluation_committee, interest_area=work.interest_area).exclude(user__id__in=users_work_id)
-        
-#         data = {
-#             'corrector': users_committee[0].user,
-#             'evaluations': Evaluation.objects.filter(correction_date__lte=event.start_of_registrations, corrector=users_committee[0].user).count()
-#         }
+        #event = Edition.objects.get(ativo=True)
+        #inscription = Inscription.objects.get(user=request.user, edition=event)
+    evaluation_committee = EvaluationCommittee.objects.all()
+    workAuthor = workAuthor.objects.filter(work=work)
+    users_work_id = [x.user.id for x in workAuthor if x.work == work]
+    users_committee = UserCommittee.objects.filter(committee=evaluation_committee, interest_area=work.interest_area).exclude(user__id__in=users_work_id)
+    
+    data = {
+        'corrector': users_committee[0].user,
+        'evaluations': Evaluation.objects.filter(corrector=users_committee[0].user).count()
+    }
 
-#         for corrector in users_committee:
-#             evaluations = Evaluation.objects.filter(
-#                 correction_date__lte=event.start_of_registrations, 
-#                 corrector=corrector.user
-#             ).count()
-#             if evaluations < data['evaluations']:
-#                 data['corrector'] = corrector.user
-#                 data['evaluations'] = evaluations
+    for corrector in users_committee:
+        evaluations = Evaluation.objects.filter(
+            corrector=corrector.user
+        ).count()
+        if evaluations < data['evaluations']:
+            data['corrector'] = corrector.user
+            data['evaluations'] = evaluations
 
-#         evaluation = Evaluation.objects.create(work=work, corrector=data['corrector'])
-#         evaluation.save()
-        
-#         rating_criteria_event = RatingCriteria.objects.filter(edition=event)
-#         items = []
-#         for criteria in rating_criteria_event:
-#             items.append(EvaluationRatingCriteria(criteria=criteria, value=0.0, evaluation=evaluation))
+    evaluation = Evaluation.objects.create(work=work, corrector=data['corrector'])
+    evaluation.save()
+    
+    rating_criteria_event = RatingCriteria.objects.all()
+    items = []
+    for criteria in rating_criteria_event:
+        items.append(EvaluationRatingCriteria(criteria=criteria, value=0.0, evaluation=evaluation))
 
-#         EvaluationRatingCriteria.objects.bulk_create(items)
+    EvaluationRatingCriteria.objects.bulk_create(items)
 
-#         html_content = render_to_string('work/send_email.html', {'work': work, 'corrector': data['corrector']})
-#         text_content = strip_tags(html_content)
+    html_content = render_to_string('work/send_email.html', {'work': work, 'corrector': data['corrector']})
+    text_content = strip_tags(html_content)
 
-#         subject = "[SEMEX] Um novo trabalho submetido para avaliação! | SEMEX"
-#         from_email = "SEMEX <"+ str(settings.EMAIL_HOST_USER)+">"
-#         to = [data['corrector'].email]
+    subject = "[ESPPEDU] Um novo trabalho submetido para avaliação! | ESPPEDU"
+    from_email = "ESPPEDU <"+ str(settings.EMAIL_HOST_USER)+">"
+    to = [data['corrector'].email]
 
-#         msg = EmailMultiAlternatives(subject, text_content, from_email, to)
-#         msg.attach_alternative(html_content, "text/html")
-#         msg.send()
+    msg = EmailMultiAlternatives(subject, text_content, from_email, to)
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()
 
-#         pass
+    pass
 
 # Views para Model Work
 @method_decorator(login_required, name='dispatch')
@@ -457,7 +521,8 @@ class CreateWork(CreateView):
     """
     model = Work
     form_class = WorkForm
-    template_name = 'work/add.html' 
+    template_name = 'work/add.html'
+ 
 
     def get(self, request, *args, **kwargs):
         self.userwork_formset = UserWorkFormSet(initial=[{'name':self.request.user.name,'email':self.request.user.email, 'is_coordinator': False}])
@@ -662,36 +727,49 @@ class CreateEvaluation(CreateView):
     """
     ClassView para Criação de objeto Evaluation
     """
+
     model = Evaluation
     form_class = EvaluationForm
     template_name = 'evaluation/add.html'
 
-    def get(self, request, *args, **kwargs):
-        # edition = Edition.objects.get(ativo=True)
-        # self.rating_criteria_event = RatingCriteria.objects.filter(edition=edition)
-        # items = []
-        # for criteria in self.rating_criteria_event:
-        #     items.append({'criteria': criteria, 'value': 0.0 ,})
+    def get_form(self, form_class=None):
+        if form_class:
+            return form_class(self.request.POST,initial={'work':self.work, 'corrector':self.request.user})
+        else:
+            return self.form_class(self.request.POST,initial={'work':self.work,'corrector':self.request.user})
 
+    def get(self, request,pk, *args, **kwargs):
+        #edition = Interest_area.objects.get(ativo=True)work
+        self.work = Work.objects.get(id=pk)
+
+        self.rating_criteria_event = RatingCriteria.objects.all()
+        items = []
+        for criteria in self.rating_criteria_event:
+            items.append({'criteria': criteria, 'value': 0.0 ,})
+        self.evaluation_rating_criteria = EvaluationRatingCriteriaFormSet(initial=items)
         
-        # self.evaluation_rating_criteria = EvaluationRatingCriteriaFormSet(initial=items)
-
         return super(CreateEvaluation,self).get(request, *args, **kwargs)
     
-    def post(self, request, *args, **kwargs):
+    def post(self, request,pk, *args, **kwargs):
+        self.work = Work.objects.get(id=pk)
+        self.evaluation_rating_criteria = EvaluationRatingCriteriaFormSet(self.request.POST)
         form = self.get_form()
-        #self.evaluation_rating_criteria = EvaluationRatingCriteriaFormSet(self.request.POST)
-        if form.is_valid():  #and self.evaluation_rating_criteria.is_valid()
+        if form.is_valid() and self.evaluation_rating_criteria.is_valid():
             return self.form_valid(form)
         else:
+            self.object=None
+            print("form errors",form.errors,form.is_valid() , self.evaluation_rating_criteria.is_valid())
+            print("formset errors",self.evaluation_rating_criteria.errors)
             return self.form_invalid(form)
 
     def form_valid(self,form):
+        
         self.object = form.save()
-        #self.evaluation_rating_criteria.instance=self.object
-        #self.evaluation_rating_criteria.save()
-        #edition = Edition.objects.get(ativo=True)
-        #self.rating_criteria_event = RatingCriteria.objects.filter(edition=edition)
+        self.evaluation_rating_criteria.instance=self.object
+        self.evaluation_rating_criteria.save()
+        
+        # edition = Edition.objects.get(ativo=True)
+        # self.rating_criteria_event = RatingCriteria.objects.all()
     
         # for criteria in self.rating_criteria_event:
         #     name = "criteria-" + str(criteria.id)
@@ -703,11 +781,11 @@ class CreateEvaluation(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(CreateEvaluation,self).get_context_data(**kwargs)
-        #context['rating_criteria_event'] = self.rating_criteria_event
-        #context['evaluation_rating_criteria'] = self.evaluation_rating_criteria
+        context['work'] = self.work
+        context['evaluation_rating_criteria'] = self.evaluation_rating_criteria
         return context
 
-
+ 
 @method_decorator(login_required, name='dispatch')
 class UpdateEvaluation(UpdateView):
     """
@@ -719,28 +797,28 @@ class UpdateEvaluation(UpdateView):
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
-        # self.evaluation_rating_criteria = EvaluationRatingCriteria.objects.filter(evaluation=self.object)
-        #self.evaluation_rating_criteria = EvaluationRatingCriteriaFormSet(instance=self.object)
+        self.evaluation_rating_criteria = EvaluationRatingCriteria.objects.filter(evaluation=self.object)
+        self.evaluation_rating_criteria = EvaluationRatingCriteriaFormSet(instance=self.object)
         return super(UpdateEvaluation,self).get(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.form_class(self.request.POST, instance=self.object)
-        #self.evaluation_rating_criteria = EvaluationRatingCriteriaFormSet(self.request.POST, instance=self.object)
-        if form.is_valid(): #and self.evaluation_rating_criteria.is_valid()
+        self.evaluation_rating_criteria = EvaluationRatingCriteriaFormSet(self.request.POST, instance=self.object)
+        if form.is_valid() and self.evaluation_rating_criteria.is_valid(): 
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
 
     def form_valid(self,form):
         self.object = form.save()
-        #self.evaluation_rating_criteria.save()
+        self.evaluation_rating_criteria.save()
         return HttpResponseRedirect(reverse('evaluation_committee:list_evaluation'))
 
     def get_context_data(self, **kwargs):
-        #self.evaluation_rating_criteria.extra=0
+        self.evaluation_rating_criteria.extra=0
         context = super(UpdateEvaluation,self).get_context_data(**kwargs)
-        #context['evaluation_rating_criteria'] = self.evaluation_rating_criteria
+        context['evaluation_rating_criteria'] = self.evaluation_rating_criteria
         return context
 
 
@@ -819,7 +897,7 @@ class GetEvaluation(DetailView):
     
     def get_context_data(self, **kwargs):
         context = super(GetEvaluation,self).get_context_data(**kwargs)
-        #context['rating_criteria'] = EvaluationRatingCriteria.objects.filter(evaluation=self.object)
+        context['rating_criteria'] = EvaluationRatingCriteria.objects.filter(evaluation=self.object)
         context['authors'] = UserWork.objects.filter(work=self.object.work)
         return context
 

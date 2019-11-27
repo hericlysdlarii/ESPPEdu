@@ -8,5 +8,5 @@ urlpatterns = [
     path('programacoes/', schedule, name='schedule'), # Programações
     path('normas/', standards, name='standards'), # Normas
     #path('inscricao/', ParticipantsCreate.as_view(), name='inscricao'), # Inscricao
-    #path('resultado_submissoes/', submission_result, name='submission_result'), # resultado sumissoes
+    path('resultado_submissoes/', submission_result, name='submission_result'), # resultado sumissoes
 ]

@@ -30,70 +30,72 @@ def standards(request):
   return render(request, 'website/standards.html')
 
 # resultado das submissoes
-# def submission_result(request):
+def submission_result(request):
 
-#   picos = []
-#   parnaiba = []
-#   floriano = []
-#   teresina = []
-#   bj = []
+  works = []
+  # parnaiba = []
+  # floriano = []
+  # teresina = []
+  # bj = []
 
-#   # i_picos = Inscription.objects.filter(campus=4)
-#   # i_parnaiba = Inscription.objects.filter(campus=1)
-#   # i_floriano = Inscription.objects.filter(campus=5)
-#   # i_teresina = Inscription.objects.filter(campus=2)
-#   # i_bj = Inscription.objects.filter(campus=3)
+  # i_picos = Inscription.objects.filter(campus=4)
+  # i_parnaiba = Inscription.objects.filter(campus=1)
+  # i_floriano = Inscription.objects.filter(campus=5)
+  # i_teresina = Inscription.objects.filter(campus=2)
+  # i_bj = Inscription.objects.filter(campus=3)
 
 
-#   trabalhos = Evaluation.objects.all()
+  trabalhos = Evaluation.objects.all()
 
-#   for i in i_picos:
-#     evt =  Evaluation.objects.filter(work__submission_user=i.user)
-#     if evt:
-#       for user in evt:
-#         if user.average >=7:
-#           picos.append(user.work.title)
+  #for i in i_picos:
+  evt =  Evaluation.objects.all()
+  #self.work = Work.objects.get(id=pk)
+  if evt:
+    for user in evt:
+      if user.average >=7:
+        d = {'work': user.work, 'author': UserWork.objects.filter(work=user.work)}
+        works.append(d)
   
 
-#   for i in i_parnaiba:
-#     evt =  Evaluation.objects.filter(work__submission_user=i.user)
-#     if evt:
-#       for user in evt:
-#         if user.average >=7:
-#           parnaiba.append(user.work.title)
+  # for i in i_parnaiba:
+  #   evt =  Evaluation.objects.filter(work__submission_user=i.user)
+  #   if evt:
+  #     for user in evt:
+  #       if user.average >=7:
+  #         parnaiba.append(user.work.title)
 
 
-#   for i in i_floriano:
-#     evt =  Evaluation.objects.filter(work__submission_user=i.user)
-#     if evt:
-#       for user in evt:
-#         if user.average >=7:
-#           floriano.append(user.work.title)
+  # for i in i_floriano:
+  #   evt =  Evaluation.objects.filter(work__submission_user=i.user)
+  #   if evt:
+  #     for user in evt:
+  #       if user.average >=7:
+  #         floriano.append(user.work.title)
 
-#   for i in i_teresina:
-#     evt =  Evaluation.objects.filter(work__submission_user=i.user)
-#     if evt:
-#       for user in evt:
-#         if user.average >=7:
-#           teresina.append(user.work.title)
+  # for i in i_teresina:
+  #   evt =  Evaluation.objects.filter(work__submission_user=i.user)
+  #   if evt:
+  #     for user in evt:
+  #       if user.average >=7:
+  #         teresina.append(user.work.title)
 
-#   for i in i_bj:
-#     evt =  Evaluation.objects.filter(work__submission_user=i.user)
-#     if evt:
-#       for user in evt:
-#         if user.average >=7:
-#           bj.append(user.work.title)
+  # for i in i_bj:
+  #   evt =  Evaluation.objects.filter(work__submission_user=i.user)
+  #   if evt:
+  #     for user in evt:
+  #       if user.average >=7:
+  #         bj.append(user.work.title)
 
-#   contexto = {
-#       'picos': picos,
-#       'teresina': teresina,
-#       'parnaiba': parnaiba,
-#       'bomjesus': bj,
-#       'floriano': floriano
-#   }
+  contexto = {
+      'works': works
+      # 'teresina': teresina,
+      # 'parnaiba': parnaiba,
+      # 'bomjesus': bj,
+      # 'floriano': floriano
+  }
 
 
-#   return render(request, 'website/submission_result.html',contexto)
+  return render(request, 'website/submission_result.html', contexto)
 
 #Inscrição
 # class ParticipantsCreate(CreateView):

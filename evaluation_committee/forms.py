@@ -23,13 +23,13 @@ class InterestAreaForm(forms.ModelForm):
         fields = '__all__'
 
 
-# class RatingCriteriaForm(forms.ModelForm):
-#     """
-#     Formulário para criação e edição do model RatingCriteria
-#     """
-#     class Meta:
-#         model = RatingCriteria
-#         exclude = ('weight',)
+class RatingCriteriaForm(forms.ModelForm):
+    """
+    Formulário para criação e edição do model RatingCriteria
+    """
+    class Meta:
+        model = RatingCriteria
+        exclude = ('weight',)
 
 
 class UserWorkForm(forms.Form):
@@ -68,7 +68,7 @@ class EvaluationForm(forms.ModelForm):
 		required=True,
 		queryset = Work.objects.all(),
 		label = "Trabalho",
-		widget = autocomplete.ModelSelect2(url='evaluation_committee:work_autocomplete',attrs={'style': 'height: auto'})
+		#widget = autocomplete.ModelSelect2(url='evaluation_committee:work_autocomplete',attrs={'style': 'height: auto'})
 	)
     corrector = forms.ModelChoiceField(
 		required=True,
@@ -81,20 +81,20 @@ class EvaluationForm(forms.ModelForm):
         fields = ['work', 'corrector', 'observation',]
 
 
-# class EvaluationRatingCriteriaForm(forms.ModelForm):
-#     """
-#     Formulário para criação e edição do model Evaluation Rating Criteria
-#     """
-#     value = forms.DecimalField(max_value=10.00)
-#     class Meta:
-#         model = EvaluationRatingCriteria
-#         fields = ['criteria','value',]
-#         # widgets = {'criteria':autocomplete.ModelSelect2(url='evaluation_committee:criteria_autocomplete',attrs={'style': 'height: auto'})}
+class EvaluationRatingCriteriaForm(forms.ModelForm):
+    """
+    Formulário para criação e edição do model Evaluation Rating Criteria
+    """
+    value = forms.DecimalField(max_value=10.00)
+    class Meta:
+        model = EvaluationRatingCriteria
+        fields = ['criteria','value',]
+        widgets = {'criteria':autocomplete.ModelSelect2(url='evaluation_committee:criteria_autocomplete',attrs={'style': 'height: auto'})}
 
 
-# # Formset para adicionar os autores do trabalho
-# EvaluationRatingCriteriaFormSet = forms.inlineformset_factory(
-#     Evaluation, EvaluationRatingCriteria, form=EvaluationRatingCriteriaForm)
+# Formset para adicionar os autores do trabalho
+EvaluationRatingCriteriaFormSet = forms.inlineformset_factory(
+    Evaluation, EvaluationRatingCriteria, form=EvaluationRatingCriteriaForm)
 
 
 class UserCommitteeForm(forms.ModelForm):

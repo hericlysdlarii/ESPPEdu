@@ -21,7 +21,8 @@
 						</ul>
 					</li>
 
-					{% comment %} <li class="treeview">
+					{% comment '' %}
+					<li class="treeview">
 						<a href="#">
 							<i class="fa fa-calendar"></i> <span>Evento</span>
 							<span class="pull-right-container">
@@ -42,10 +43,10 @@
 							<li><a href="{% url 'editions:notification-certificate' %}"><i class="fa fa-envelope" aria-hidden="true"></i>Notificação dos Certificados</a></li>
 
 						</ul>
-					</li> {% endcomment %}
+					</li>
+					
 
-
-					{% comment %} <li class="treeview">
+					<li class="treeview">
 						<a href="#">
 							<i class="fa fa-check"></i> <span>Inscrições</span>
 							<span class="pull-right-container">
@@ -60,7 +61,8 @@
 							
 
 						</ul>
-					</li> {% endcomment %}
+					</li>
+					{% endcomment %}
 
 					<li class="treeview">
 						<a href="#">
@@ -74,11 +76,12 @@
 							<li><a href="{% url 'evaluation_committee:list_work' %}"><i class="fa fa-file"></i>Trabalhos</a></li>
 							<li><a href="{% url 'evaluation_committee:list_interest_area' %}"><i class="fa fa-book"></i>Área de Interesse</a></li>
 							<li><a href="{% url 'evaluation_committee:list_evaluation' %}"><i class="fa fa-clipboard"></i>Avaliações</a></li>
-							{% comment %}
-							<li><a href="{% url 'evaluation_committee:list_rating_criteria' %}"><i class="fa fa-check"></i>Critério de Avaliação</a></li> 
+							<li><a href="{% url 'evaluation_committee:list_rating_criteria' %}"><i class="fa fa-check"></i>Critério de Avaliação</a></li>
+							{% comment '' %}
 							{% if request.user.username == 'gabriell' or request.user.username == 'marcoslira' %}
 							<li><a href="{% url 'core:ranking' %}"><i class="fa fa-medal"></i>Ranking</a></li>
-							{% endif %} {% endcomment %}
+							{% endif %}
+							{% endcomment %}
 						</ul>
 					</li>
 			</li>

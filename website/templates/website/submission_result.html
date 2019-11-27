@@ -1,20 +1,20 @@
 {% extends 'base_public.html' %}
 {% load staticfiles %}
-{% block title %}SEMEX | Programações{% endblock %}
+{% block title %}ESPPEDU {% endblock %}
 
 {% block header %}
     <!--Header-area-->
-    <header class="header-area overlay full-height relative v-center">
+    {% comment %} <header class="header-area overlay full-height relative v-center">
         <div class="absolute anlge-bg"></div>
         <div class="container">
             <div class="row v-center">
                 <div class="col-xs-12 col-md-12 text-center">
-                    <img src="{% static 'images/SIUFPI_site.png' %}" alt="">
+                    <img src="#" alt="">
                     <h1>RESULTADOS</h1>
                 </div>
             </div>
         </div>
-    </header>
+    </header> {% endcomment %}
     <!--Header-area/-->
 {% endblock %}
 
@@ -25,58 +25,40 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
                     <div class="page-title">
-                      <h2>RESULTADO DAS SUBMISSÕES</h2>
-                      <p>A seguir estão os resultados das submissões de cada Campus para o evento</p>
+                      <h2>ARTIGOS</h2>
+                      <!-- <p>A seguir estão os resultados das submissões de cada Campus para o evento</p> -->
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
-
-                 
                   <div class="panel panel-success">
-                          <div class="panel-heading">
-                              Resultado da Seleção de Trabalhos
-                          </div>
-                          <div class="panel-body">
-                            
-                            <h4>Teresina</h4>
+                        <div class="panel-body">    
                             <ol>
-                                {% for trb in teresina %}
-                                    <li>{{trb}}</li>
-                                {% endfor %}
-                            </ol>
-                            <h4>Picos</h4>
-
-                            <ol>
-                                {% for trb in picos %}
-                                    <li>{{trb}}</li>
-                                {% endfor %}
-                            </ol>
-
-                            <h4>Parnaíba</h4>
-
-                            <ol>
-                                {% for trb in parnaiba %}
-                                    <li>{{trb}}</li>
-                                {% endfor %}
-                            </ol>
-
-                            <h4>Floriano</h4>
-
-                            <ol>
-                                {% for trb in floriano %}
-                                    <li>{{trb}}</li>
-                                {% endfor %}
-                            </ol>
-
-
-                            <h4>Bom Jesus</h4>
-
-                            <ol>
-                                {% for trb in bomjesus %}
-                                    <li>{{trb}}</li>
-                                {% endfor %}
+                                <div class="card mb-3">
+                                    <!-- <img src="img_avatar.png" alt="Avatar" style="width:100%"> -->
+                                            {% for trb in works %}
+                                                <div class="card-header">
+                                                    <h4>{{trb.work.title}}</h4>
+                                                </div>
+                                                {% for author in trb.author %}
+                                                    <strong>Autor: </strong>
+                                                    {{ author.user.name }}
+                                                {%endfor%}<br>
+                                                {% if trb.work.file_word %}
+                                                <a href="{{ trb.work.file_word.url }}" class="btn btn-primary">
+                                                    <strong>Word</strong>
+                                                </a>
+                                                {% endif %}
+                                                {% if trb.work.file_pdf %}
+                                                <a href="{{ trb.work.file_pdf.url }}" class="btn btn-primary">
+                                                    <strong>PDF</strong>
+                                                </a>
+                                                <br>
+                                                <br>
+                                                {% endif %}
+                                            {% endfor %}
+                                </div>
                             </ol>
 
                         </div>

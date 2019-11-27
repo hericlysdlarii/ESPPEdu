@@ -34,8 +34,8 @@ class Work(AuditModel):
     file_word = models.FileField('Arquivo Word', blank=True, null=True, upload_to='uploads/%Y/%m/%d/')
     file_pdf = models.FileField('Arquivo PDF', blank=True, null=True, upload_to='uploads/%Y/%m/%d/')
     submission_user = models.ForeignKey(User, verbose_name='Usuário que submeteu', blank=True, null=True, on_delete=models.DO_NOTHING)
-    
-    
+    #status = models.BooleanField(blank=True, null=True, default=False)
+
     @property
     def author(self):
         author = UserWork.objects.get(work=self, order=1)
@@ -76,17 +76,17 @@ class Evaluation(AuditModel):
     def get_absolute_url(self):
         return reverse('evaluation_committee:list_evaluation')
 
-    # @property
-    # def average(self):
-    #     notes = EvaluationRatingCriteria.objects.filter(evaluation=self)
-    #     final = 0
-    #     for note in notes:
-    #         final += float(note.value)
+    @property
+    def average(self):
+        notes = EvaluationRatingCriteria.objects.filter(evaluation=self)
+        final = 0
+        for note in notes:
+            final += float(note.value)
         
-    #     try:  
-    #         return float(final/notes.count())
-    #     except ZeroDivisionError:
-    #         return 0.0
+        try:  
+            return float(final/notes.count())
+        except ZeroDivisionError:
+            return 0.0
 
     class Meta:
         verbose_name = 'Avaliação'
@@ -94,46 +94,46 @@ class Evaluation(AuditModel):
         ordering = ['id']
 
 
-# class RatingCriteria(AuditModel):
-#     """
-#     Modelo de classe para cadastro de critério de avaliação.
-#     """
-#     #edition = models.ForeignKey(Edition, verbose_name='edição', on_delete=models.CASCADE)
-#     name = models.CharField('Nome', blank=False, null=False, max_length=255)
-#     weight = models.DecimalField('Peso', max_digits=4, decimal_places=2, blank=True, null=True)
+class RatingCriteria(AuditModel):
+    """
+    Modelo de classe para cadastro de critério de avaliação.
+    """
+    #edition = models.ForeignKey(Edition, verbose_name='edição', on_delete=models.CASCADE)
+    name = models.CharField('Nome', blank=False, null=False, max_length=255)
+    weight = models.DecimalField('Peso', max_digits=4, decimal_places=2, blank=True, null=True)
 
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return self.name
 
-#     def get_absolute_url(self):
-#         return reverse('evaluation_committee:list_rating_criteria')
+    def get_absolute_url(self):
+        return reverse('evaluation_committee:list_rating_criteria')
 
-#     class Meta:
-#         verbose_name = 'Critério de Avaliação'
-#         verbose_name_plural = 'Critérios de Avaliação'
-#         ordering = ['id']
+    class Meta:
+        verbose_name = 'Critério de Avaliação'
+        verbose_name_plural = 'Critérios de Avaliação'
+        ordering = ['id']
 
 
-# class EvaluationRatingCriteria(AuditModel):
-#     """
-#     Modelo de classe para cadastro de nota (0-10) do critério de avaliação para o 
-#     trabalho especificado. 
-#     """
-#     criteria = models.ForeignKey(RatingCriteria, verbose_name='critério', on_delete=models.CASCADE)
-#     evaluation = models.ForeignKey(Evaluation, verbose_name='avaliação', on_delete=models.CASCADE)
-#     value = models.DecimalField('Valor', max_digits=4, decimal_places=2, blank=False, null=False)
+class EvaluationRatingCriteria(AuditModel):
+    """
+    Modelo de classe para cadastro de nota (0-10) do critério de avaliação para o 
+    trabalho especificado. 
+    """
+    criteria = models.ForeignKey(RatingCriteria, verbose_name='critério', on_delete=models.CASCADE)
+    evaluation = models.ForeignKey(Evaluation, verbose_name='avaliação', on_delete=models.CASCADE)
+    value = models.DecimalField('Valor', max_digits=4, decimal_places=2, blank=False, null=False)
 
-#     def __str__(self):
-#         return 'Avaliação do critério {} do trabalho {}'.format(self.criteria.name, self.evaluation.work.title)
+    def __str__(self):
+        return 'Avaliação do critério {} do trabalho {}'.format(self.criteria.name, self.evaluation.work.title)
 
-#     def get_absolute_url(self):
-#         pass
-#         # return reverse('evaluation_committee:rating_criteria_list')
+    def get_absolute_url(self):
+        pass
+        return reverse('evaluation_committee:rating_criteria_list')
 
-#     class Meta:
-#         verbose_name = 'Avaliação do critério'
-#         verbose_name_plural = 'Avaliações dos critérios'
-#         ordering = ['id'] 
+    class Meta:
+        verbose_name = 'Avaliação do critério'
+        verbose_name_plural = 'Avaliações dos critérios'
+        ordering = ['id'] 
 
 
 class EvaluationCommittee(AuditModel):
@@ -189,7 +189,7 @@ class UserWork(AuditModel):
 
     def get_absolute_url(self):
         pass
-        # return reverse('evaluation_committee:rating_criteria_list')
+        return reverse('evaluation_committee:rating_criteria_list')
 
     class Meta:
         verbose_name = 'Usuário com Trabalho'

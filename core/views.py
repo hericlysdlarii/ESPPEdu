@@ -41,27 +41,27 @@ def index(request):
 # @login_required
 # def ranking(request):
 #     search = None
-#     campus = Campus.objects.all()
+#     #campus = Campus.objects.all()
 #     data = []
 #     total = 0
 #     if request.GET.get('search_box') and request.GET['search_box'] != '':
 #         search = request.GET['search_box']
-#         campus = Campus.objects.filter(name__icontains=search)
+#         #campus = Campus.objects.filter(name__icontains=search)
 
-#         for c in campus:
-#             inscriptions = Inscription.objects.filter(campus=c)
-#             users = [x.user for x in inscriptions]
-#             works = UserWork.objects.filter(user__in=users)
+#         #for c in campus:
+#             #inscriptions = Inscription.objects.filter(campus=c)
+#             #users = [x.user for x in inscriptions]
+#         works = UserWork.objects.filter(user__in=users)
 
-#             works_id = [x.work.id for x in works]
+#         works_id = [x.work.id for x in works]
 
-#             evaluations = Evaluation.objects.filter(work__id__in=works_id)
-                
-#             x = sorted(evaluations, key=lambda t: t.average, reverse=True)
-#             total += evaluations.count()
-#             data.append({
-#                 'campus': c,
-#                 'works' :  x
-#             })
+#         evaluations = Evaluation.objects.filter(work__id__in=works_id)
+            
+#         x = sorted(evaluations, key=lambda t: t.average, reverse=True)
+#         total += evaluations.count()
+#         data.append({
+#             #'campus': c,
+#             'works' :  x
+#         })
 
 #     return render(request, 'ranking.html', {'object_list': data, 'search_box': search, 'total': total})

@@ -12,6 +12,12 @@
                 <div class="col-md-8 blog-main">
 
                     <h2><strong>Principais Publicações</strong></h2>
+                    {% for object in posts %}
+                        <tr>
+                            <td>{{ object.work.title}}</td>
+                            <td>{{ object.average|floatformat:2}}</td>	
+                        </tr>
+                    {% endfor %}
                     
                     {% if posts.count == 0 %}
                         <div style="text-align:center" class="jumbotron">

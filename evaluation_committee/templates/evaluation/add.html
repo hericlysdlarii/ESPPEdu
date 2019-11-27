@@ -7,12 +7,11 @@
 <div class="content">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-				<h3>Avaliação : {{ form.instance.work.title }}</h3>
+				<h3>Avaliação : {{ work.title }}</h3>
 			<div class="box box-primary">
 				<div class="box-body">
-					{% if request.user.is_organizer %}
-					{% if form.instance.work.file_word %}
-					<a href="{{ form.instance.work.file_word.url }}" class="btn btn-primary">
+					{% if work.file_word %}
+					<a href="{{ work.file_word.url }}" class="btn btn-primary">
 						<strong>Word</strong>
 					</a>
 					{% else %}
@@ -20,9 +19,8 @@
 						<strong>Word (não enviado)</strong>
 					</a>
 					{% endif %}
-					{% endif %}
-					{% if form.instance.work.file_pdf %}
-					<a href="{{ form.instance.work.file_pdf.url }}" class="btn btn-primary">
+					{% if work.file_pdf %}
+					<a href="{{ work.file_pdf.url }}" class="btn btn-primary">
 						<strong>PDF</strong>
 					</a>
 					{% else %}
@@ -34,31 +32,24 @@
 				<form action="." class="form-group" method="post">{% csrf_token %}
 					<div class="box-body">
 						<table class="table table-striped" id="contato_table">
-							{% comment %}
 							<tbody>
 								<tr>
+						
 									<th style="width: 70%">Critério</th>
 									<th>Nota</th>
 								</tr>
-							
+								{{evaluation_rating_criteria.management_form}}
 							{% for form_criteria in evaluation_rating_criteria %}
 								{% for hidden in form_criteria.hidden_fields %}
-									{{ hidden }}
+								{{ hidden }}
 								{% endfor %}
 								<tr {% if not form_criteria.pk %} class="dynamic"{% endif %} id="{{ form_criteria.prefix }}-row">
 										{# <td>{{ form_criteria.criteria.name|add_class:"form-control" }}</td> #}
-										<td>{{ form_criteria.instance.criteria.name }}{{form_criteria.criteria.as_hidden}}</td>
+										<td>{{ form_criteria.criteria }}{{form_criteria.criteria.as_hidden}}</td>
 										<td>{{ form_criteria.value|add_class:"form-control" }}</td>
 								</tr>
 							{% endfor %}
-							
-								<tr>
-									<td><strong>Média</strong></td>
-									<td><strong>{{ form.instance.average|floatformat:3 }}</strong></td>
-								</tr>
-							{{ evaluation_rating_criteria.management_form }}
 							</tbody>
-							{% endcomment %}
 						</table>
 						
 						{% for field in form %}
@@ -70,7 +61,7 @@
 							<label class="control-label" >{{ field.label }}</label>
 							{{ field|add_class:"form-control input-md" }}
 							{% for error in field.errors%}
-							<span class="help-inline error">{{ error}}</span>
+							<span class="help-inline error">{{ error }}</span>
 							{% endfor%}
 						</div>
 						{%else%}
@@ -78,16 +69,16 @@
 							<div class="form-group">
 								<label class="control-label" >{{ field.label }}</label>
 								{{ field|add_class:"form-control input-md" }}
-							</div>
+							</div> 
 							{% else %}
 							{{ field.as_hidden }}
 							{% endif %}
-							{% comment %} {% if request.user.is_organizer and field.name == 'corrector' %}
+							{% if field.name == 'corrector' %}
 							<div class="form-group">
 								<label class="control-label" >{{ field.label }}</label>
 								{{ field|add_class:"form-control input-md" }}
 							</div>
-							{% endif %} {% endcomment %}
+							{% endif %}
 						{%endif%}
 						{% endfor %}
 						<!-- {% if evaluation_rating_criteria %}
