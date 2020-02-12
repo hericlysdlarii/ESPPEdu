@@ -1,7 +1,7 @@
 appdirs==1.4.2
 asn1crypto==0.24.0
 cryptography==2.1.4
-Django==1.11.25
+Django==1.11.28
 django-autocomplete-light==3.2.1
 django-extensions==2.2.1
 django-localflavor==1.4.1
