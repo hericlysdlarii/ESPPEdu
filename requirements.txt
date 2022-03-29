@@ -19,7 +19,7 @@ MySQL-python==1.2.5
 mysql-utilities==1.6.4
 mysqlclient==1.4.5
 packaging==16.8
-paramiko==2.0.0
+paramiko==2.10.1
 pexpect==4.2.1
 Pillow==5.2.0
 psycopg2==2.7
